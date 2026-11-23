@@ -1027,6 +1027,29 @@
       .act1-details-body p:last-child {
         margin-bottom: 0;
       }
+      .act2-note-box {
+        margin-top: 28px;
+        padding: 16px 20px;
+        background-color: #fefce8;
+        border: 1.5px solid #fde047;
+        border-left: 5px solid #ca8a04;
+        border-radius: var(--radius-md);
+        color: var(--text);
+        font-size: 0.96rem;
+        line-height: 1.65;
+      }
+      .act2-note-box strong {
+        color: #854d0e;
+        font-weight: 800;
+      }
+      .act2-note-box code {
+        font-family: var(--font-mono);
+        font-size: 0.86em;
+        background-color: rgba(254, 240, 138, 0.65);
+        padding: 2px 5px;
+        border-radius: var(--radius-sm);
+        color: #713f12;
+      }
       .act2-top-diagram-wrapper {
         margin-top: 28px;
         padding: 20px 24px 24px 24px;
@@ -5438,6 +5461,24 @@
           <div id="atividade-1-docs-container" class="act1-docs-layout"></div>
 
           <div
+            id="atividade-2-note"
+            class="act2-note-box"
+            style="display: none"
+            role="note"
+          >
+            <strong>Atenção:</strong> Utilize
+            <strong>4 contas Google distintas</strong> (1 para o Data Scientist
+            e 3 para os Data Owners) e avance de forma sincronizada por etapas,
+            aguardando todos os DOs concluírem cada passo antes de prosseguir no
+            DS. Caso precise reiniciar o experimento, execute
+            <code>delete_syftbox()</code> e verifique na aba lateral
+            <strong>Arquivos</strong> (<code>/content</code>) do Google Colab se
+            não restaram pastas residuais (<code>SyftBox_*</code>,
+            <code>dataset/</code> ou <code>fl-diabetes-prediction/</code>) que
+            possam causar conflitos.
+          </div>
+
+          <div
             id="atividade-2-top-diagram"
             class="act2-top-diagram-wrapper"
             style="display: none"
@@ -6195,33 +6236,33 @@
             <line x1="365" y1="190" x2="180" y2="272" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
           </g>
 
-          <!-- ETAPA 7: DOs enviam pesos locais para o Drive -> DS -->
+<!-- ETAPA 7: DOs enviam pesos locais para o Drive -> DS -->
           <g id="act2-do-to-ds-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
             <!-- DOs -> Drive -->
-            <line x1="180" y1="68" x2="365" y2="150" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="180" y1="170" x2="360" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="180" y1="272" x2="365" y2="190" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="186" y1="68" x2="356" y2="144" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="186" y1="170" x2="354" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="186" y1="272" x2="356" y2="196" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
             <!-- Drive -> DS -->
-            <line x1="465" y1="170" x2="640" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="468" y1="170" x2="632" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
           </g>
 
           <!-- ETAPA 8: Troca Bidirecional de Rodadas (DOs <-> Drive <-> DS) -->
           <g id="act2-exchange-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
             <!-- DO 1 <-> Drive -->
-            <line x1="182" y1="62" x2="368" y2="144" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="362" y1="156" x2="176" y2="74" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+            <line x1="186" y1="60" x2="356" y2="136" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="356" y1="150" x2="186" y2="74" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
             <!-- DO 2 <-> Drive -->
-            <line x1="182" y1="163" x2="360" y2="163" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="360" y1="177" x2="182" y2="177" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+            <line x1="186" y1="162" x2="354" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="354" y1="178" x2="186" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
             <!-- DO 3 <-> Drive -->
-            <line x1="182" y1="266" x2="368" y2="184" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="362" y1="196" x2="176" y2="278" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+            <line x1="186" y1="264" x2="356" y2="188" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="356" y1="202" x2="186" y2="278" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
             <!-- Drive <-> DS -->
-            <line x1="462" y1="163" x2="640" y2="163" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="640" y1="177" x2="462" y2="177" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+            <line x1="468" y1="162" x2="632" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+            <line x1="632" y1="178" x2="468" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
           </g>
 
 
@@ -7193,10 +7234,9 @@
 
       const atividade1DocsContent = {
         pt: {
-          titulo:
-            "Atividade 1: Pipeline Reutilizável de Aprendizado Federado (Flower)",
+          titulo: "Atividade 1: Pipeline de Aprendizado Federado (Flower)",
           descricao:
-            "Implemente um pipeline modular em Python com Flower (ClientApp e ServerApp), escalonamento federado na Rodada 0, matriz de confusão global e comparação com baselines centralizados.",
+            "Implemente um pipeline em Python com Flower (ClientApp e ServerApp), escalonamento federado na Rodada 0, matriz de confusão global e comparação com baselines centralizados.",
           botao: "Ir para Atividade 2",
           nextFooterLabel: "Próxima etapa: Atividade 2 →",
           copyLabel: "Copiar código",
@@ -7208,10 +7248,10 @@
               id: "act1-estrutura-flower",
               tocLabel: "Arquitetura de Arquivos (Flower)",
               html: `
-                <h3>Estrutura do Pipeline Modular (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
-                <p>Este notebook implementa um pipeline modular para simular <strong>Aprendizado Federado (AF)</strong> com a arquitetura moderna do <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> e compará-lo diretamente com modelos <strong>Centralizados (Baselines)</strong> no conjunto de dados <em>Pima Indians Diabetes</em>.</p>
+                <h3>Estrutura do Pipeline (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
+                <p>Este notebook implementa um pipeline para simular <strong>Aprendizado Federado (AF)</strong> com a arquitetura do <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> e compará-lo diretamente com modelos <strong>Centralizados (Baselines)</strong> no conjunto de dados <em>Pima Indians Diabetes</em>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver organização lógica do notebook</span><span class="act1-file-pill">flwr_app/</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver organização lógica do notebook</span></span></summary>
                   <div class="act1-details-body">
                     <p>Em um projeto padrão do Flower criado via CLI (<code>flwr new</code>), a aplicação é organizada em uma pasta com quatro arquivos principais:</p>
                     <ul>
@@ -7220,7 +7260,7 @@
                       <li><code>client_app.py</code> — Implementa o <code>ClientApp</code> e a lógica de cada nó participante (como <code>NumPyClient</code>), responsável por receber parâmetros globais, treinar localmente com <code>fit</code> e retornar pesos e métricas em <code>evaluate</code>.</li>
                       <li><code>server_app.py</code> — Implementa o <code>ServerApp</code>, definindo os parâmetros iniciais, a estratégia de agregação (como <code>FedAvg</code>) e a agregação de métricas globais entre rodadas.</li>
                     </ul>
-                    <p><strong>Pasta com arquivos vs. Fluxo único no Google Colab:</strong> Enquanto a estrutura em pasta com módulos separados facilita a implantação distribuída e a execução pelo comando <code>flwr run</code>, no <strong>Google Colab</strong> consolidamos esses mesmos papéis em células sequenciais de um único notebook, instanciando <code>ClientApp</code> e <code>ServerApp</code> diretamente em memória e executando toda a federação com <code>fl.simulation.run_simulation()</code> sem precisar gerenciar múltiplos arquivos externos.</p>
+                    <p><strong>Pasta com arquivos vs. Fluxo único no Google Colab:</strong> Enquanto a estrutura em pasta com módulos separados facilita a implantação distribuída e a execução pelo comando <code>flwr run</code>, no <strong>Google Colab</strong> esses mesmos papéis são estabelecidos em células sequenciais de um único notebook, iniciando <code>ClientApp</code> e <code>ServerApp</code> diretamente em memória e executando toda a federação com <code>fl.simulation.run_simulation()</code> sem precisar gerenciar múltiplos arquivos externos.</p>
                   </div>
                 </details>
               `,
@@ -7230,11 +7270,12 @@
               tocLabel: "1–2. Setup e Hiperparâmetros",
               html: `
                 <h3>1 e 2. Instalação, Seeds e Hiperparâmetros (<code>CONFIG</code>)</h3>
-                <p>Instalamos <code>flwr[simulation]</code>, silenciamos logs verbosos do TensorFlow/Ray e centralizamos todas as configurações do experimento (10 rodadas, 5 clientes, divisão 80/20 e hiperparâmetros de Keras e Regressão Logística) no dicionário <code>CONFIG</code>.</p>
+                <p>Instalamos <code>flwr[simulation]</code>, silenciamos logs verbosos do TensorFlow/Ray e definimos todas as configurações do experimento (10 rodadas, 5 clientes, divisão 80/20 e hiperparâmetros de Keras e Regressão Logística) no dicionário <code>CONFIG</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Instalação, set_global_seeds e CONFIG</span><span class="act1-file-pill">etapas_1_2.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Instalação, set_global_seeds e CONFIG</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>!pip install -q "flwr[simulation]"
+                  <pre>%%capture
+!pip install -q "flwr[simulation]==1.44.0"
 
 import os, random
 import numpy as np
@@ -7253,11 +7294,14 @@ CONFIG = {
     "num_clients": 5,
     "test_size": 0.2,
     "random_state": 42,
+
     "keras_hidden_units": 16,
-    "keras_epochs": 2,
-    "keras_batch_size": 32,
+    "keras_epochs": 3,
+    "keras_batch_size": 16,
+
     "logreg_penalty": "l2",
-    "logreg_local_epochs": 5,
+    "logreg_local_epochs": 1,
+
     "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
 }
 
@@ -7272,7 +7316,7 @@ set_global_seeds(CONFIG["random_state"])</pre>
                 <h3>3. Preparação e Particionamento Estratificado dos Dados</h3>
                 <p>O dataset é baixado uma única vez para <code>/content/dataset_cache.csv</code> e particionado via <code>StratifiedKFold</code> entre os 5 clientes, evitando gargalos de rede durante a simulação Ray. A função <code>load_client_data</code> carrega a partição do cliente e aplica a normalização global quando informada.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: prepare_federated_dataset e load_client_data</span><span class="act1-file-pill">etapa_3.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: prepare_federated_dataset e load_client_data</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
     df = pd.read_csv(url, header=None)
@@ -7312,7 +7356,7 @@ def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_pa
                 <h3>4. Escalonamento Federado (Rodada 0)</h3>
                 <p>Agrega apenas estatísticas locais suficientes (tamanhos amostrais <em>N</em><sub><em>k</em></sub>, soma e soma dos quadrados) de cada cliente para calcular a média e o desvio padrão globais exatos sem expor nenhum registro bruto.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: compute_federated_scaler</span><span class="act1-file-pill">etapa_4.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: compute_federated_scaler</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>def compute_federated_scaler(num_clients: int):
     total_n, total_sum, total_sq_sum = 0, None, None
@@ -7343,7 +7387,7 @@ INPUT_DIM = FED_MEAN.shape[0]</pre>
                 <h3>5. Definição dos Modelos (Keras &amp; Regressão Logística)</h3>
                 <p>Construtores dos modelos locais: uma rede MLP em <strong>Keras</strong> e uma <strong>Regressão Logística</strong> (Scikit-Learn) inicializada com <code>warm_start=True</code> e funções auxiliares <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: build_keras_model e build_logreg_model</span><span class="act1-file-pill">etapa_5.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: build_keras_model e build_logreg_model</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>def build_keras_model(input_dim: int) -> keras.Model:
     model = keras.Sequential([
@@ -7351,8 +7395,12 @@ INPUT_DIM = FED_MEAN.shape[0]</pre>
         keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
         keras.layers.Dense(1, activation="sigmoid"),
     ])
-    model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
-    return model
+    model.compile(
+    optimizer=keras.optimizers.SGD(learning_rate=0.05),
+    loss="binary_crossentropy",
+    metrics=["accuracy"],
+)   
+     return model
 
 def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
     model = LogisticRegression(
@@ -7385,7 +7433,7 @@ def set_logreg_params(model: LogisticRegression, params):
                 <h3>6 e 7. Clientes Federados (<code>NumPyClient</code>) e <code>ClientApp</code></h3>
                 <p>Cada cliente encapsula <code>get_parameters</code>, <code>fit</code> e <code>evaluate</code>. Na avaliação local, o cliente também calcula os 4 componentes da matriz de confusão (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para permitir a soma exata no servidor sem expor predições individuais.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: KerasClient, LogRegClient e create_client_fn</span><span class="act1-file-pill">etapas_6_7.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: KerasClient, LogRegClient e create_client_fn</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>class KerasClient(fl.client.NumPyClient):
     def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
@@ -7402,24 +7450,74 @@ def set_logreg_params(model: LogisticRegression, params):
         self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
         return self.model.get_weights(), len(self.x_train), {}
 
-    def evaluate(self, parameters, config_dict):
+    def evaluate(self, parameters, config):
         self.model.set_weights(parameters)
-        loss, accuracy = self.model.evaluate(self.x_test, self.y_test, verbose=0)
-        y_pred = (self.model.predict(self.x_test, verbose=0) >= 0.5).astype(int).ravel()
+        y_prob = self.model(self.x_test, training=False).numpy().ravel()
+        y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
+
+        loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
+        y_pred = (y_prob >= 0.5).astype(int)
+        accuracy = float(np.mean(y_pred == self.y_test))
         tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+
+        return loss, len(self.x_test), {
+            "accuracy": accuracy,
+            "client_id": self.partition_id,
+            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+        }
+
+class LogRegClient(fl.client.NumPyClient):
+    def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
+        self.model = model
+        self.x_train, self.y_train = x_train, y_train
+        self.x_test, self.y_test = x_test, y_test
+        self.partition_id = partition_id
+
+    def get_parameters(self, config):
+        return get_logreg_params(self.model)
+
+    def fit(self, parameters, config):
+        set_logreg_params(self.model, parameters)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            self.model.fit(self.x_train, self.y_train)
+        return get_logreg_params(self.model), len(self.x_train), {}
+
+    def evaluate(self, parameters, config):
+        set_logreg_params(self.model, parameters)
+        y_prob = self.model.predict_proba(self.x_test)
+        loss = log_loss(self.y_test, y_prob, labels=[0, 1])
+
+        y_pred = (y_prob[:, 1] >= 0.5).astype(int)
+        accuracy = float(np.mean(y_pred == self.y_test))
+        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+
         return float(loss), len(self.x_test), {
-            "accuracy": float(accuracy), "client_id": self.partition_id,
+            "accuracy": accuracy,
+            "client_id": self.partition_id,
             "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
         }
 
 def create_client_fn(model_type: str):
     def client_fn(context: fl.common.Context):
+        os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+        warnings.filterwarnings("ignore")
+
         part_id = int(context.node_config["partition-id"])
         set_global_seeds(CONFIG["random_state"] + part_id)
+
         X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
+        input_dim = X_train.shape[1]
+
         if model_type == "keras":
-            return KerasClient(build_keras_model(X_train.shape[1]), X_train, y_train, X_test, y_test, part_id).to_client()
-        return LogRegClient(build_logreg_model(X_train.shape[1], CONFIG["logreg_local_epochs"]), X_train, y_train, X_test, y_test, part_id).to_client()
+            keras.backend.clear_session()
+            model = build_keras_model(input_dim)
+            return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+        elif model_type == "logreg":
+            model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
+            return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+        raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
+
     return client_fn
 
 keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
@@ -7434,7 +7532,7 @@ logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</p
                 <h3>8. Estratégia de Agregação (<code>FedAvg</code>) e <code>ServerApp</code></h3>
                 <p>A função <code>weighted_average</code> calcula a acurácia global ponderada pelo número de exemplos e soma as contagens locais (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para compor a matriz de confusão global federada a cada rodada.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: weighted_average e create_server_app</span><span class="act1-file-pill">etapa_8.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: weighted_average e create_server_app</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>def weighted_average(metrics):
     total_examples = sum(num_examples for num_examples, _ in metrics)
@@ -7480,14 +7578,57 @@ def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
                 <h3>9 e 10. Simulação Federada e Comparação com Baselines Centralizados</h3>
                 <p>Executamos as simulações federadas para Keras e Regressão Logística via <code>fl.simulation.run_simulation</code> (10 rodadas, 5 clientes) e comparamos os resultados com seus equivalentes centralizados (Keras e Regressão Logística treinados na base unificada com a mesma divisão treino/teste).</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: run_federated_experiment e run_centralized_baselines</span><span class="act1-file-pill">etapas_9_10.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: run_centralized_baselines e run_simulation_pair</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def run_federated_experiment(model_name: str, client_app, server_app):
-    global CLIENT_METRICS_LOG, ROUND_ACCURACIES_LOG, ROUND_CONF_MATRICES_LOG
-    CLIENT_METRICS_LOG = {cid: [] for cid in range(CONFIG["num_clients"])}
-    ROUND_ACCURACIES_LOG = []
-    ROUND_CONF_MATRICES_LOG = []
+                  <pre>def def run_centralized_baselines(num_clients: int) -> Dict:
     set_global_seeds(CONFIG["random_state"])
+
+    partitions = [load_client_data(cid) for cid in range(num_clients)]
+    X_train_global = np.vstack([p[0] for p in partitions])
+    X_test_global = np.vstack([p[1] for p in partitions])
+    y_train_global = np.concatenate([p[2] for p in partitions])
+    y_test_global = np.concatenate([p[3] for p in partitions])
+
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train_global)
+    X_test_scaled = scaler.transform(X_test_global)
+    input_dim = X_train_scaled.shape[1]
+
+    keras_central = build_keras_model(input_dim)
+    keras_central.fit(
+        X_train_scaled,
+        y_train_global,
+        epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
+        batch_size=CONFIG["keras_batch_size"],
+        verbose=0,
+    )
+    _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
+    y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
+    cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
+
+    logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        logreg_central.fit(X_train_scaled, y_train_global)
+    acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
+    y_pred_logreg = logreg_central.predict(X_test_scaled)
+    cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
+
+    return {
+        "keras_global": float(acc_keras_global),
+        "logreg_global": float(acc_logreg_global),
+        "keras_cm": cm_keras_central,
+        "logreg_cm": cm_logreg_central,
+    }
+
+def run_simulation_pair(
+    server_app: fl.server.ServerApp,
+    client_app: fl.client.ClientApp,
+) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
+    set_global_seeds(CONFIG["random_state"])
+    CLIENT_METRICS_LOG.clear()
+    ROUND_ACCURACIES_LOG.clear()
+    ROUND_CONF_MATRICES_LOG.clear()
 
     fl.simulation.run_simulation(
         server_app=server_app,
@@ -7496,25 +7637,27 @@ def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
         backend_config={"client_resources": CONFIG["client_resources"]},
     )
 
-    return {
-        "model_name": model_name,
-        "client_accuracies": {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
-        "global_accuracies": list(ROUND_ACCURACIES_LOG),
-        "final_cm": ROUND_CONF_MATRICES_LOG[-1] if ROUND_CONF_MATRICES_LOG else None,
-        "final_accuracy": ROUND_ACCURACIES_LOG[-1] if ROUND_ACCURACIES_LOG else 0.0,
-    }
+    best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
+    best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
 
-res_fed_keras = run_federated_experiment("Keras (MLP)", keras_client_app, create_server_app("keras", INPUT_DIM))
-res_fed_logreg = run_federated_experiment("Regressão Logística", logreg_client_app, create_server_app("logreg", INPUT_DIM))</pre>
+    return (
+        list(ROUND_ACCURACIES_LOG),
+        {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
+        best_cm,
+    )
+
+acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
+acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
+central_results = run_centralized_baselines(CONFIG["num_clients"])</pre>
                 </details>
               `,
             },
           ],
         },
         en: {
-          titulo: "Activity 1: Reusable Federated Learning Pipeline (Flower)",
+          titulo: "Activity 1: Federated Learning Pipeline (Flower)",
           descricao:
-            "Implement a modular Python pipeline using Flower (ClientApp and ServerApp), Round 0 federated scaling, global confusion matrix, and comparison against centralized baselines.",
+            "Implement a Python pipeline using Flower (ClientApp and ServerApp), Round 0 federated scaling, global confusion matrix, and comparison against centralized baselines.",
           botao: "Go to Activity 2",
           nextFooterLabel: "Next step: Activity 2 →",
           copyLabel: "Copy code",
@@ -7526,10 +7669,10 @@ res_fed_logreg = run_federated_experiment("Regressão Logística", logreg_client
               id: "act1-estrutura-flower",
               tocLabel: "File Architecture (Flower)",
               html: `
-                <h3>Modular Pipeline Structure (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
-                <p>This notebook implements a modular pipeline to simulate <strong>Federated Learning (FL)</strong> using the modern <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> architecture and compare it directly with <strong>Centralized (Baseline)</strong> models on the <em>Pima Indians Diabetes</em> dataset.</p>
+                <h3>Pipeline Structure (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
+                <p>This notebook implements a pipeline to simulate <strong>Federated Learning (FL)</strong> using the <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> architecture and compare it directly with <strong>Centralized (Baseline)</strong> models on the <em>Pima Indians Diabetes</em> dataset.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View logical organization of the notebook</span><span class="act1-file-pill">flwr_app/</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View logical organization of the notebook</span></span></summary>
                   <div class="act1-details-body">
                     <p>In a standard Flower project created via CLI (<code>flwr new</code>), the application is organized into a folder with four main files:</p>
                     <ul>
@@ -7548,11 +7691,12 @@ res_fed_logreg = run_federated_experiment("Regressão Logística", logreg_client
               tocLabel: "1–2. Setup & Hyperparameters",
               html: `
                 <h3>1 &amp; 2. Installation, Seeds, and Hyperparameters (<code>CONFIG</code>)</h3>
-                <p>We install <code>flwr[simulation]</code>, silence verbose TensorFlow/Ray logs, and centralize all experiment settings (10 rounds, 5 clients, 80/20 split, and Keras and Logistic Regression hyperparameters) in the <code>CONFIG</code> dictionary.</p>
+                <p>We install <code>flwr[simulation]</code>, silence verbose TensorFlow/Ray logs, and define all experiment settings (10 rounds, 5 clients, 80/20 split, and Keras and Logistic Regression hyperparameters) in the <code>CONFIG</code> dictionary.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Installation, set_global_seeds, and CONFIG</span><span class="act1-file-pill">steps_1_2.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Installation, set_global_seeds, and CONFIG</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>!pip install -q "flwr[simulation]"
+                  <pre>%%capture
+!pip install -q "flwr[simulation]==1.44.0"
 
 import os, random
 import numpy as np
@@ -7571,11 +7715,14 @@ CONFIG = {
     "num_clients": 5,
     "test_size": 0.2,
     "random_state": 42,
+
     "keras_hidden_units": 16,
-    "keras_epochs": 2,
-    "keras_batch_size": 32,
+    "keras_epochs": 3,
+    "keras_batch_size": 16,
+
     "logreg_penalty": "l2",
-    "logreg_local_epochs": 5,
+    "logreg_local_epochs": 1,
+
     "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
 }
 
@@ -7590,7 +7737,7 @@ set_global_seeds(CONFIG["random_state"])</pre>
                 <h3>3. Data Preparation and Stratified Partitioning</h3>
                 <p>The dataset is downloaded once to <code>/content/dataset_cache.csv</code> and partitioned via <code>StratifiedKFold</code> across the 5 clients, avoiding network bottlenecks during Ray simulation. The <code>load_client_data</code> function loads each client's partition and applies global normalization when provided.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: prepare_federated_dataset and load_client_data</span><span class="act1-file-pill">step_3.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: prepare_federated_dataset and load_client_data</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
     df = pd.read_csv(url, header=None)
@@ -7630,7 +7777,7 @@ def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_pa
                 <h3>4. Federated Scaling (Round 0)</h3>
                 <p>Aggregates only sufficient local statistics (sample sizes <em>N</em><sub><em>k</em></sub>, sum, and sum of squares) from each client to compute exact global mean and standard deviation without exposing any raw records.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: compute_federated_scaler</span><span class="act1-file-pill">step_4.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: compute_federated_scaler</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>def compute_federated_scaler(num_clients: int):
     total_n, total_sum, total_sq_sum = 0, None, None
@@ -7661,7 +7808,7 @@ INPUT_DIM = FED_MEAN.shape[0]</pre>
                 <h3>5. Model Definitions (Keras &amp; Logistic Regression)</h3>
                 <p>Local model builders: an MLP network in <strong>Keras</strong> and a <strong>Logistic Regression</strong> (Scikit-Learn) initialized with <code>warm_start=True</code> along with helper functions <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: build_keras_model and build_logreg_model</span><span class="act1-file-pill">step_5.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: build_keras_model and build_logreg_model</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>def build_keras_model(input_dim: int) -> keras.Model:
     model = keras.Sequential([
@@ -7669,7 +7816,11 @@ INPUT_DIM = FED_MEAN.shape[0]</pre>
         keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
         keras.layers.Dense(1, activation="sigmoid"),
     ])
-    model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
+    model.compile(
+    optimizer=keras.optimizers.SGD(learning_rate=0.05),
+    loss="binary_crossentropy",
+    metrics=["accuracy"],
+)
     return model
 
 def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
@@ -7703,7 +7854,7 @@ def set_logreg_params(model: LogisticRegression, params):
                 <h3>6 &amp; 7. Federated Clients (<code>NumPyClient</code>) &amp; <code>ClientApp</code></h3>
                 <p>Each client encapsulates <code>get_parameters</code>, <code>fit</code>, and <code>evaluate</code>. During local evaluation, the client also computes the 4 confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) so the server can sum them exactly without exposing individual predictions.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: KerasClient, LogRegClient, and create_client_fn</span><span class="act1-file-pill">steps_6_7.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: KerasClient, LogRegClient, and create_client_fn</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>class KerasClient(fl.client.NumPyClient):
     def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
@@ -7720,25 +7871,76 @@ def set_logreg_params(model: LogisticRegression, params):
         self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
         return self.model.get_weights(), len(self.x_train), {}
 
-    def evaluate(self, parameters, config_dict):
+    def evaluate(self, parameters, config):
         self.model.set_weights(parameters)
-        loss, accuracy = self.model.evaluate(self.x_test, self.y_test, verbose=0)
-        y_pred = (self.model.predict(self.x_test, verbose=0) >= 0.5).astype(int).ravel()
+        y_prob = self.model(self.x_test, training=False).numpy().ravel()
+        y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
+
+        loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
+        y_pred = (y_prob >= 0.5).astype(int)
+        accuracy = float(np.mean(y_pred == self.y_test))
         tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+
+        return loss, len(self.x_test), {
+            "accuracy": accuracy,
+            "client_id": self.partition_id,
+            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+        }
+
+class LogRegClient(fl.client.NumPyClient):
+    def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
+        self.model = model
+        self.x_train, self.y_train = x_train, y_train
+        self.x_test, self.y_test = x_test, y_test
+        self.partition_id = partition_id
+
+    def get_parameters(self, config):
+        return get_logreg_params(self.model)
+
+    def fit(self, parameters, config):
+        set_logreg_params(self.model, parameters)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            self.model.fit(self.x_train, self.y_train)
+        return get_logreg_params(self.model), len(self.x_train), {}
+
+    def evaluate(self, parameters, config):
+        set_logreg_params(self.model, parameters)
+        y_prob = self.model.predict_proba(self.x_test)
+        loss = log_loss(self.y_test, y_prob, labels=[0, 1])
+
+        y_pred = (y_prob[:, 1] >= 0.5).astype(int)
+        accuracy = float(np.mean(y_pred == self.y_test))
+        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+
         return float(loss), len(self.x_test), {
-            "accuracy": float(accuracy), "client_id": self.partition_id,
+            "accuracy": accuracy,
+            "client_id": self.partition_id,
             "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
         }
 
 def create_client_fn(model_type: str):
     def client_fn(context: fl.common.Context):
+        os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+        warnings.filterwarnings("ignore")
+
         part_id = int(context.node_config["partition-id"])
         set_global_seeds(CONFIG["random_state"] + part_id)
+
         X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
+        input_dim = X_train.shape[1]
+
         if model_type == "keras":
-            return KerasClient(build_keras_model(X_train.shape[1]), X_train, y_train, X_test, y_test, part_id).to_client()
-        return LogRegClient(build_logreg_model(X_train.shape[1], CONFIG["logreg_local_epochs"]), X_train, y_train, X_test, y_test, part_id).to_client()
+            keras.backend.clear_session()
+            model = build_keras_model(input_dim)
+            return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+        elif model_type == "logreg":
+            model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
+            return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+        raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
+
     return client_fn
+
 
 keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
 logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</pre>
@@ -7752,7 +7954,7 @@ logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</p
                 <h3>8. Aggregation Strategy (<code>FedAvg</code>) &amp; <code>ServerApp</code></h3>
                 <p>The <code>weighted_average</code> function computes sample-weighted global accuracy and sums local confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) to build the global federated confusion matrix at every round.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: weighted_average and create_server_app</span><span class="act1-file-pill">step_8.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: weighted_average and create_server_app</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>def weighted_average(metrics):
     total_examples = sum(num_examples for num_examples, _ in metrics)
@@ -7798,14 +8000,57 @@ def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
                 <h3>9 &amp; 10. Federated Simulation &amp; Centralized Baselines</h3>
                 <p>We execute federated simulations for Keras and Logistic Regression via <code>fl.simulation.run_simulation</code> (10 rounds, 5 clients) and compare the results against their centralized counterparts trained on the unified dataset using the same train/test split.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: run_federated_experiment and run_centralized_baselines</span><span class="act1-file-pill">steps_9_10.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: run_centralized_baselines and run_simulation_pair</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def run_federated_experiment(model_name: str, client_app, server_app):
-    global CLIENT_METRICS_LOG, ROUND_ACCURACIES_LOG, ROUND_CONF_MATRICES_LOG
-    CLIENT_METRICS_LOG = {cid: [] for cid in range(CONFIG["num_clients"])}
-    ROUND_ACCURACIES_LOG = []
-    ROUND_CONF_MATRICES_LOG = []
+                  <pre>def run_centralized_baselines(num_clients: int) -> Dict:
     set_global_seeds(CONFIG["random_state"])
+
+    partitions = [load_client_data(cid) for cid in range(num_clients)]
+    X_train_global = np.vstack([p[0] for p in partitions])
+    X_test_global = np.vstack([p[1] for p in partitions])
+    y_train_global = np.concatenate([p[2] for p in partitions])
+    y_test_global = np.concatenate([p[3] for p in partitions])
+
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train_global)
+    X_test_scaled = scaler.transform(X_test_global)
+    input_dim = X_train_scaled.shape[1]
+
+    keras_central = build_keras_model(input_dim)
+    keras_central.fit(
+        X_train_scaled,
+        y_train_global,
+        epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
+        batch_size=CONFIG["keras_batch_size"],
+        verbose=0,
+    )
+    _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
+    y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
+    cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
+
+    logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        logreg_central.fit(X_train_scaled, y_train_global)
+    acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
+    y_pred_logreg = logreg_central.predict(X_test_scaled)
+    cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
+
+    return {
+        "keras_global": float(acc_keras_global),
+        "logreg_global": float(acc_logreg_global),
+        "keras_cm": cm_keras_central,
+        "logreg_cm": cm_logreg_central,
+    }
+
+def run_simulation_pair(
+    server_app: fl.server.ServerApp,
+    client_app: fl.client.ClientApp,
+) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
+    set_global_seeds(CONFIG["random_state"])
+    CLIENT_METRICS_LOG.clear()
+    ROUND_ACCURACIES_LOG.clear()
+    ROUND_CONF_MATRICES_LOG.clear()
 
     fl.simulation.run_simulation(
         server_app=server_app,
@@ -7814,16 +8059,19 @@ def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
         backend_config={"client_resources": CONFIG["client_resources"]},
     )
 
-    return {
-        "model_name": model_name,
-        "client_accuracies": {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
-        "global_accuracies": list(ROUND_ACCURACIES_LOG),
-        "final_cm": ROUND_CONF_MATRICES_LOG[-1] if ROUND_CONF_MATRICES_LOG else None,
-        "final_accuracy": ROUND_ACCURACIES_LOG[-1] if ROUND_ACCURACIES_LOG else 0.0,
-    }
+    best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
+    best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
 
-res_fed_keras = run_federated_experiment("Keras (MLP)", keras_client_app, create_server_app("keras", INPUT_DIM))
-res_fed_logreg = run_federated_experiment("Logistic Regression", logreg_client_app, create_server_app("logreg", INPUT_DIM))</pre>
+    return (
+        list(ROUND_ACCURACIES_LOG),
+        {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
+        best_cm,
+    )
+
+acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
+acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
+central_results = run_centralized_baselines(CONFIG["num_clients"])
+</pre>
                 </details>
               `,
             },
@@ -7872,7 +8120,7 @@ res_fed_logreg = run_federated_experiment("Logistic Regression", logreg_client_a
                 <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Instalação de Dependências e Login no SyftBox</h3>
                 <p>Tanto o Data Owner quanto o Data Scientist instalam o pacote <code>syft-flwr</code> e realizam autenticação via <code>syft_client.login()</code>, vinculando o Google Drive como camada de transporte assíncrono de arquivos e mensagens.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Instalação e login com syft_client</span><span class="act1-file-pill">etapa_1_setup.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Instalação e login com syft_client</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>!pip install -q "syft-flwr @ git+https://github.com/OpenMined/syft-flwr.git@main"
 
@@ -7893,7 +8141,7 @@ client = sc.login(email=email)</pre>
                 <h3><span class="act2-role-badge role-do">DO</span> 2. Registro do Dataset Privado e Dados Mock</h3>
                 <p>Cada Data Owner baixa sua partição do dataset <em>Pima Indians Diabetes</em>, gera uma amostra sintética (<em>mock</em>) apenas com a estrutura das colunas para o Data Scientist testar o pipeline e cria o dataset privado no SyftBox.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Criação de dataset privado e mock no DO</span><span class="act1-file-pill">etapa_2_do_dataset.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Criação de dataset privado e mock no DO</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre># Cada DO carrega apenas sua própria partição clínica
 client.create_dataset(
@@ -7915,7 +8163,7 @@ client.datasets.get_all()</pre>
                 <h3><span class="act2-role-badge role-ds">DS</span> 3. Descoberta dos Data Owners na Rede</h3>
                 <p>No notebook do Data Scientist, adicionamos os e-mails dos Data Owners participantes como pares (<code>add_peer</code>) e inspecionamos os metadados e amostras mock disponíveis em cada nó.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Adicionando pares e listando datasets remotos</span><span class="act1-file-pill">etapa_3_ds_peers.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Adicionando pares e listando datasets remotos</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>do_emails = [
     "do1@exemplo.com",
@@ -7939,7 +8187,7 @@ for peer in client.peers:
                 <h3><span class="act2-role-badge role-ds">DS</span> 4. Estruturação do Projeto Flower, Bootstrap e Envio de Jobs</h3>
                 <p>O Data Scientist cria o projeto Flower com <code>pyproject.toml</code>, <code>task.py</code> (rede MLP PyTorch), <code>client_app.py</code> e <code>server_app.py</code>, executa <code>syft_flwr.bootstrap()</code> para injetar o transporte SyftBox, valida na simulação mock e envia os jobs aos Data Owners.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Bootstrap syft-flwr, teste mock e submit_jobs</span><span class="act1-file-pill">etapa_4_ds_bootstrap.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Bootstrap syft-flwr, teste mock e submit_jobs</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre>PROJECT_DIR = Path("/content/fl-diabetes-syft")
 
@@ -7969,7 +8217,7 @@ client.submit_jobs(
                 <h3><span class="act2-role-badge role-do">DO</span> 5 e 6. Inspeção, Aprovação e Execução Local nos Data Owners</h3>
                 <p>Por segurança e governança, nenhum código é executado automaticamente no Data Owner. Cada participante lista os jobs pendentes, inspeciona os arquivos submetidos pelo Data Scientist, aprova o job e inicia o loop de processamento.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Aprovação de job e execução no Data Owner</span><span class="act1-file-pill">etapas_5_6_do_approve.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Aprovação de job e execução no Data Owner</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre># Lista os jobs recebidos do Data Scientist
 jobs = client.jobs.get_all()
@@ -7992,7 +8240,7 @@ client.process_approved_jobs()</pre>
                 <h3><span class="act2-role-badge role-ds">DS</span> 7, 8 e 9. Execução do Servidor Federado (<code>FedAvg</code>) e Modelo Global</h3>
                 <p>Assim que os Data Owners aprovam e iniciam seus clientes, o Data Scientist executa <code>syft_flwr.run(project_dir=PROJECT_DIR, mock=False)</code>. Ao longo das rodadas, apenas os tensores de pesos PyTorch são trocados via Google Drive, agregados via <code>FedAvg</code> e consolidados no modelo global final.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Execução real da federação no Data Scientist</span><span class="act1-file-pill">etapas_7_9_ds_run.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Execução real da federação no Data Scientist</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
                   <pre># Inicia o ServerApp Flower sincronizando pesos via Google Drive
 syft_flwr.run(
@@ -8047,7 +8295,7 @@ print("Treinamento federado concluído! Pesos globais disponíveis em:", PROJECT
                 <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Installing Dependencies &amp; SyftBox Login</h3>
                 <p>Both Data Owner and Data Scientist install <code>syft-flwr</code> and authenticate via <code>syft_client.login()</code>, linking Google Drive as the asynchronous transport layer for files and messages.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Installation and login with syft_client</span><span class="act1-file-pill">step_1_setup.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Installation and login with syft_client</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>!pip install -q "syft-flwr @ git+https://github.com/OpenMined/syft-flwr.git@main"
 
@@ -8068,7 +8316,7 @@ client = sc.login(email=email)</pre>
                 <h3><span class="act2-role-badge role-do">DO</span> 2. Registering Private Dataset &amp; Mock Data</h3>
                 <p>Each Data Owner downloads its partition of the <em>Pima Indians Diabetes</em> dataset, generates a synthetic (<em>mock</em>) sample with matching column structure for the Data Scientist to test the pipeline, and registers the private dataset on SyftBox.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Creating private and mock datasets on DO</span><span class="act1-file-pill">step_2_do_dataset.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Creating private and mock datasets on DO</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre># Each DO loads only its own clinical partition
 client.create_dataset(
@@ -8090,7 +8338,7 @@ client.datasets.get_all()</pre>
                 <h3><span class="act2-role-badge role-ds">DS</span> 3. Discovering Data Owners on the Network</h3>
                 <p>In the Data Scientist's notebook, we register participating Data Owner emails as network peers (<code>add_peer</code>) and inspect the metadata and mock samples exposed by each node.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Adding peers and listing remote datasets</span><span class="act1-file-pill">step_3_ds_peers.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Adding peers and listing remote datasets</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>do_emails = [
     "do1@example.com",
@@ -8114,7 +8362,7 @@ for peer in client.peers:
                 <h3><span class="act2-role-badge role-ds">DS</span> 4. Structuring the Flower Project, Bootstrap &amp; Job Submission</h3>
                 <p>The Data Scientist creates a Flower project with <code>pyproject.toml</code>, <code>task.py</code> (PyTorch MLP network), <code>client_app.py</code>, and <code>server_app.py</code>, runs <code>syft_flwr.bootstrap()</code> to inject SyftBox transport, validates via mock simulation, and submits jobs to Data Owners.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: syft-flwr bootstrap, mock test, and submit_jobs</span><span class="act1-file-pill">step_4_ds_bootstrap.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: syft-flwr bootstrap, mock test, and submit_jobs</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>PROJECT_DIR = Path("/content/fl-diabetes-syft")
 
@@ -8144,7 +8392,7 @@ client.submit_jobs(
                 <h3><span class="act2-role-badge role-do">DO</span> 5 &amp; 6. Inspecting, Approving &amp; Running Locally on Data Owners</h3>
                 <p>For security and governance, no code runs automatically on a Data Owner. Each participant lists incoming jobs, inspects the files submitted by the Data Scientist, approves the job, and launches the processing loop.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Approving job and running on Data Owner</span><span class="act1-file-pill">steps_5_6_do_approve.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Approving job and running on Data Owner</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre># List jobs received from the Data Scientist
 jobs = client.jobs.get_all()
@@ -8167,7 +8415,7 @@ client.process_approved_jobs()</pre>
                 <h3><span class="act2-role-badge role-ds">DS</span> 7, 8 &amp; 9. Running the Federated Server (<code>FedAvg</code>) &amp; Global Model</h3>
                 <p>Once Data Owners approve and start their clients, the Data Scientist runs <code>syft_flwr.run(project_dir=PROJECT_DIR, mock=False)</code>. Across rounds, only PyTorch weight tensors are exchanged via Google Drive, aggregated via <code>FedAvg</code>, and consolidated into the final global model.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Running real federation on Data Scientist</span><span class="act1-file-pill">steps_7_9_ds_run.py</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Running real federation on Data Scientist</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre># Start Flower ServerApp synchronizing weights via Google Drive
 syft_flwr.run(
@@ -8198,6 +8446,7 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
       const act1DocsContainer = document.getElementById(
         "atividade-1-docs-container",
       );
+      const act2NoteBox = document.getElementById("atividade-2-note");
       const act2TopDiagram = document.getElementById("atividade-2-top-diagram");
       const act2DocsContainer = document.getElementById(
         "atividade-2-docs-container",
@@ -8367,6 +8616,7 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
           if (act2ColabDsBtn) act2ColabDsBtn.style.display = "none";
 
           if (act1DocsContainer) act1DocsContainer.style.display = "grid";
+          if (act2NoteBox) act2NoteBox.style.display = "none";
           if (act2TopDiagram) act2TopDiagram.style.display = "none";
           if (act2DocsContainer) act2DocsContainer.style.display = "none";
 
@@ -8432,6 +8682,13 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
           if (act2ColabDsBtn) act2ColabDsBtn.style.display = "inline-flex";
 
           if (act1DocsContainer) act1DocsContainer.style.display = "none";
+          if (act2NoteBox) {
+            act2NoteBox.style.display = "block";
+            act2NoteBox.innerHTML =
+              lang === "pt"
+                ? "<strong>Atenção:</strong> Nessa atividade, o uso do pacote <code>syft-flwr</code> exige permitir que o código acesse seus dados do Google Drive e Google Cloud. Por esse motivo, recomenda-se o uso de contas Google exclusivas para esse fim."
+                : "<strong>Attention:</strong> In this activity, using the <code>syft-flwr</code> package requires allowing the code to access your Google Drive and Google Cloud data. For this reason, using dedicated Google accounts for this purpose is recommended.";
+          }
           if (act2TopDiagram) act2TopDiagram.style.display = "block";
           if (act2DocsContainer) act2DocsContainer.style.display = "grid";
 
