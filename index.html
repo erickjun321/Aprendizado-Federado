@@ -1115,6 +1115,34 @@
         border-color: var(--blue-tint);
         transform: scale(1.38);
       }
+      .act2-nav-arrow {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: var(--white);
+        color: var(--text-muted);
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        user-select: none;
+        flex-shrink: 0;
+      }
+
+      .act2-nav-arrow:hover:not(:disabled) {
+        border-color: var(--denim);
+        color: var(--denim);
+        background: var(--bg-soft);
+      }
+
+      .act2-nav-arrow:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
       .act2-role-badge {
         display: inline-flex;
         align-items: center;
@@ -5514,6 +5542,15 @@
                 >
                   <button
                     type="button"
+                    class="act2-nav-arrow"
+                    id="act2-prev-step"
+                    aria-label="Etapa anterior"
+                    title="Etapa anterior"
+                  >
+                    &#8592;
+                  </button>
+                  <button
+                    type="button"
                     class="act2-stage-pill active"
                     data-act2-step="0"
                     aria-label="Etapa 1"
@@ -5540,26 +5577,41 @@
                     type="button"
                     class="act2-stage-pill"
                     data-act2-step="4"
-                    aria-label="Etapas 5 e 6"
+                    aria-label="Etapa 5"
                   ></button>
                   <button
                     type="button"
                     class="act2-stage-pill"
                     data-act2-step="5"
-                    aria-label="Etapa 7"
+                    aria-label="Etapa 6"
                   ></button>
                   <button
                     type="button"
                     class="act2-stage-pill"
                     data-act2-step="6"
-                    aria-label="Etapa 8"
+                    aria-label="Etapa 7"
                   ></button>
                   <button
                     type="button"
                     class="act2-stage-pill"
                     data-act2-step="7"
+                    aria-label="Etapa 8"
+                  ></button>
+                  <button
+                    type="button"
+                    class="act2-stage-pill"
+                    data-act2-step="8"
                     aria-label="Etapa 9"
                   ></button>
+                  <button
+                    type="button"
+                    class="act2-nav-arrow"
+                    id="act2-next-step"
+                    aria-label="Próxima etapa"
+                    title="Próxima etapa"
+                  >
+                    &#8594;
+                  </button>
                 </div>
               </div>
               <p
@@ -5831,7 +5883,7 @@
             </a>
 
             <a
-              href="www.linkedin.com/in/erick-jun-miyagi"
+              href="https://www.linkedin.com/in/erick-jun-miyagi"
               class="social__icon--link"
               aria-label="LinkedIn"
             >
@@ -5881,8 +5933,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js"></script>
     <script>
       /* =======================================
-         NAVEGAÇÃO ENTRE ABAS, TELA CHEIA E NAVBAR
-         ======================================= */
+               NAVEGAÇÃO ENTRE ABAS, TELA CHEIA E NAVBAR
+               ======================================= */
       const navbarEl = document.getElementById("navbar");
       window.addEventListener("scroll", () => {
         if (!navbarEl) return;
@@ -6082,281 +6134,294 @@
       });
 
       /* =======================================
-         SVGs E ANIMAÇÕES DA SEÇÃO COMPARE OS MÉTODOS E ATIVIDADE 2
-         ======================================= */
+               SVGs E ANIMAÇÕES DA SEÇÃO COMPARE OS MÉTODOS E ATIVIDADE 2
+               ======================================= */
       const genericSVGDefs = `
-        <defs>
-         <g id="client-icon">
-            <g transform="scale(1.15)">
-                <circle cx="0" cy="-9" r="9" fill="var(--bg)" stroke="var(--text)" stroke-width="2"/>
-                <path d="M-16 14 c0 -8 7 -12 16 -12 s16 4 16 12" fill="var(--bg)" stroke="var(--text)" stroke-width="2" stroke-linecap="round"/>
-            </g>
-         </g>
-         <g id="db-icon">
-            <g transform="scale(1.3)">
-                <ellipse cx="0" cy="-4" rx="8" ry="3" fill="currentColor" opacity="0.3" stroke="currentColor"/>
-                <path d="M-8 -4 v8 a8 3 0 0 0 16 0 v-8" fill="var(--bg)" stroke="currentColor"/>
-            </g>
-         </g>
-         <g id="file-icon">
-            <g transform="scale(1.3)">
-                <path d="M-6 -8 H2 l4 4 v8 a2 2 0 0 1 -2 2 H-6 a2 2 0 0 1 -2 -2 V-6 a2 2 0 0 1 2 -2" fill="var(--bg)" stroke="var(--primary)" stroke-width="1.5"/>
-            </g>
-         </g>
-         <g id="check-icon">
-            <g transform="scale(1.3)">
-                <circle cx="0" cy="0" r="8" fill="#10b981"/>
-                <path d="M-3 0 l2 2 l4 -4" fill="none" stroke="#fff" stroke-width="1.5"/>
-            </g>
-         </g>
-         <g id="server-icon">
-            <g transform="translate(-26, -32)">
-                <rect x="0" y="0" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
-                <circle cx="9" cy="8" r="2.2" fill="#0369a1"/>
-                <line x1="19" y1="8" x2="44" y2="8" stroke="#0369a1" stroke-width="2"/>
-                <rect x="0" y="20" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
-                <circle cx="9" cy="28" r="2.2" fill="#0369a1"/>
-                <line x1="19" y1="28" x2="44" y2="28" stroke="#0369a1" stroke-width="2"/>
-                <rect x="0" y="40" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
-                <circle cx="9" cy="48" r="2.2" fill="#0369a1"/>
-                <line x1="19" y1="48" x2="44" y2="48" stroke="#0369a1" stroke-width="2"/>
-            </g>
-         </g>
-         <g id="analyst-icon">
-            <g transform="translate(-230, -166)">
-                <circle cx="230" cy="143" r="10" fill="#e5e7eb" stroke="var(--text)" stroke-width="2"/>
-                <path d="M214 166 c0 -8 7 -12 16 -12 s16 4 16 12" fill="#d1d5db" stroke="var(--text)" stroke-width="2" stroke-linecap="round"/>
-                <rect x="208" y="166" width="44" height="22" rx="3" fill="var(--bg)" stroke="var(--text)" stroke-width="2"/>
-                <circle cx="230" cy="177" r="2.5" fill="#4b5563"/>
-                <line x1="201" y1="188" x2="259" y2="188" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round"/>
-            </g>
-         </g>
-         <g id="brain-icon">
-           <g transform="scale(1.25)">
-               <line x1="-6" y1="-5" x2="6" y2="0" stroke="currentColor" stroke-width="1.8"/>
-               <line x1="-6" y1="5" x2="6" y2="0" stroke="currentColor" stroke-width="1.8"/>
-               <circle cx="-6" cy="-5" r="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.6"/>
-               <circle cx="-6" cy="5" r="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.6"/>
-               <circle cx="6" cy="0" r="3.5" fill="currentColor" stroke="var(--bg)" stroke-width="1.2"/>
-           </g>
-         </g>
-        </defs>
-      `;
+              <defs>
+               <g id="client-icon">
+                  <g transform="scale(1.15)">
+                      <circle cx="0" cy="-9" r="9" fill="var(--bg)" stroke="var(--text)" stroke-width="2"/>
+                      <path d="M-16 14 c0 -8 7 -12 16 -12 s16 4 16 12" fill="var(--bg)" stroke="var(--text)" stroke-width="2" stroke-linecap="round"/>
+                  </g>
+               </g>
+               <g id="db-icon">
+                  <g transform="scale(1.3)">
+                      <ellipse cx="0" cy="-4" rx="8" ry="3" fill="currentColor" opacity="0.3" stroke="currentColor"/>
+                      <path d="M-8 -4 v8 a8 3 0 0 0 16 0 v-8" fill="var(--bg)" stroke="currentColor"/>
+                  </g>
+               </g>
+               <g id="file-icon">
+                  <g transform="scale(1.3)">
+                      <path d="M-6 -8 H2 l4 4 v8 a2 2 0 0 1 -2 2 H-6 a2 2 0 0 1 -2 -2 V-6 a2 2 0 0 1 2 -2" fill="var(--bg)" stroke="var(--primary)" stroke-width="1.5"/>
+                  </g>
+               </g>
+               <g id="check-icon">
+                  <g transform="scale(1.3)">
+                      <circle cx="0" cy="0" r="8" fill="#10b981"/>
+                      <path d="M-3 0 l2 2 l4 -4" fill="none" stroke="#fff" stroke-width="1.5"/>
+                  </g>
+               </g>
+               <g id="server-icon">
+                  <g transform="translate(-26, -32)">
+                      <rect x="0" y="0" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+                      <circle cx="9" cy="8" r="2.2" fill="#0369a1"/>
+                      <line x1="19" y1="8" x2="44" y2="8" stroke="#0369a1" stroke-width="2"/>
+                      <rect x="0" y="20" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+                      <circle cx="9" cy="28" r="2.2" fill="#0369a1"/>
+                      <line x1="19" y1="28" x2="44" y2="28" stroke="#0369a1" stroke-width="2"/>
+                      <rect x="0" y="40" width="52" height="16" rx="3" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+                      <circle cx="9" cy="48" r="2.2" fill="#0369a1"/>
+                      <line x1="19" y1="48" x2="44" y2="48" stroke="#0369a1" stroke-width="2"/>
+                  </g>
+               </g>
+               <g id="analyst-icon">
+                  <g transform="translate(-230, -166)">
+                      <circle cx="230" cy="143" r="10" fill="#e5e7eb" stroke="var(--text)" stroke-width="2"/>
+                      <path d="M214 166 c0 -8 7 -12 16 -12 s16 4 16 12" fill="#d1d5db" stroke="var(--text)" stroke-width="2" stroke-linecap="round"/>
+                      <rect x="208" y="166" width="44" height="22" rx="3" fill="var(--bg)" stroke="var(--text)" stroke-width="2"/>
+                      <circle cx="230" cy="177" r="2.5" fill="#4b5563"/>
+                      <line x1="201" y1="188" x2="259" y2="188" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round"/>
+                  </g>
+               </g>
+               <g id="brain-icon">
+                 <g transform="scale(1.25)">
+                     <line x1="-6" y1="-5" x2="6" y2="0" stroke="currentColor" stroke-width="1.8"/>
+                     <line x1="-6" y1="5" x2="6" y2="0" stroke="currentColor" stroke-width="1.8"/>
+                     <circle cx="-6" cy="-5" r="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.6"/>
+                     <circle cx="-6" cy="5" r="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.6"/>
+                     <circle cx="6" cy="0" r="3.5" fill="currentColor" stroke="var(--bg)" stroke-width="1.2"/>
+                 </g>
+               </g>
+              </defs>
+            `;
 
       const heroSVG = `
-        <svg viewBox="0 0 500 400" width="100%" height="100%" id="hero-svg" aria-hidden="true">
-          ${genericSVGDefs}
-          <g class="hero-center-analyst">
-            <use href="#analyst-icon" x="250" y="320"/>
-            <text id="svg-label-analyst" x="250" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">Analista</text>
-          </g>
-          <g class="hero-center-server" style="opacity:0;">
-            <use href="#server-icon" x="250" y="320"/>
-            <text id="svg-label-server" x="250" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">Servidor</text>
-          </g>
-          
-          <g class="hero-hospital">
-            <use href="#client-icon" x="90" y="160"/>
-            <text x="90" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d" data-svg-i18n="hero_client_a">Cliente A</text>
-          </g>
-          <g class="hero-hospital">
-            <use href="#client-icon" x="250" y="60"/>
-            <text x="250" y="92" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ea580c" data-svg-i18n="hero_client_b">Cliente B</text>
-          </g>
-          <g class="hero-hospital">
-            <use href="#client-icon" x="410" y="160"/>
-            <text x="410" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="#be123c" data-svg-i18n="hero_client_c">Cliente C</text>
-          </g>
-          
-          <g class="hero-db-static" transform="translate(126, 174)" style="color: #15803d;"><use href="#db-icon"/></g>
-          <g class="hero-db-static" transform="translate(286, 74)" style="color: #ea580c;"><use href="#db-icon"/></g>
-          <g class="hero-db-static" transform="translate(446, 174)" style="color: #be123c;"><use href="#db-icon"/></g>
+              <svg viewBox="0 0 500 400" width="100%" height="100%" id="hero-svg" aria-hidden="true">
+                ${genericSVGDefs}
+                <g class="hero-center-analyst">
+                  <use href="#analyst-icon" x="250" y="320"/>
+                  <text id="svg-label-analyst" x="250" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">Analista</text>
+                </g>
+                <g class="hero-center-server" style="opacity:0;">
+                  <use href="#server-icon" x="250" y="320"/>
+                  <text id="svg-label-server" x="250" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">Servidor</text>
+                </g>
 
-          <g class="hero-db-edge" data-orig-x="126" data-orig-y="174" style="color: #15803d;"><use href="#db-icon"/></g>
-          <g class="hero-db-edge" data-orig-x="286" data-orig-y="74" style="color: #ea580c;"><use href="#db-icon"/></g>
-          <g class="hero-db-edge" data-orig-x="446" data-orig-y="174" style="color: #be123c;"><use href="#db-icon"/></g>
+                <g class="hero-hospital">
+                  <use href="#client-icon" x="90" y="160"/>
+                  <text x="90" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d" data-svg-i18n="hero_client_a">Cliente A</text>
+                </g>
+                <g class="hero-hospital">
+                  <use href="#client-icon" x="250" y="60"/>
+                  <text x="250" y="92" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ea580c" data-svg-i18n="hero_client_b">Cliente B</text>
+                </g>
+                <g class="hero-hospital">
+                  <use href="#client-icon" x="410" y="160"/>
+                  <text x="410" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="#be123c" data-svg-i18n="hero_client_c">Cliente C</text>
+                </g>
 
-          <g class="hero-db-center" style="opacity:0; color: #4b5563;">
-            <g transform="scale(1.45)"><use href="#db-icon"/></g>
-          </g>
+                <g class="hero-db-static" transform="translate(126, 174)" style="color: #15803d;"><use href="#db-icon"/></g>
+                <g class="hero-db-static" transform="translate(286, 74)" style="color: #ea580c;"><use href="#db-icon"/></g>
+                <g class="hero-db-static" transform="translate(446, 174)" style="color: #be123c;"><use href="#db-icon"/></g>
 
-          <g class="hero-model-global-copy" data-dest-x="90" data-dest-y="122"><use href="#brain-icon"/></g>
-          <g class="hero-model-global-copy" data-dest-x="250" data-dest-y="22"><use href="#brain-icon"/></g>
-          <g class="hero-model-global-copy" data-dest-x="410" data-dest-y="122"><use href="#brain-icon"/></g>
-          
-          <g class="hero-model-global-center" data-dest-x="250" data-dest-y="290"><use href="#brain-icon"/></g>
-          
-          <g class="hero-model-local" data-orig-x="90" data-orig-y="122" style="color: #15803d;"><use href="#brain-icon"/></g>
-          <g class="hero-model-local" data-orig-x="250" data-orig-y="22" style="color: #ea580c;"><use href="#brain-icon"/></g>
-          <g class="hero-model-local" data-orig-x="410" data-orig-y="122" style="color: #be123c;"><use href="#brain-icon"/></g>
-        </svg>
-      `;
+                <g class="hero-db-edge" data-orig-x="126" data-orig-y="174" style="color: #15803d;"><use href="#db-icon"/></g>
+                <g class="hero-db-edge" data-orig-x="286" data-orig-y="74" style="color: #ea580c;"><use href="#db-icon"/></g>
+                <g class="hero-db-edge" data-orig-x="446" data-orig-y="174" style="color: #be123c;"><use href="#db-icon"/></g>
+
+                <g class="hero-db-center" style="opacity:0; color: #4b5563;">
+                  <g transform="scale(1.45)"><use href="#db-icon"/></g>
+                </g>
+
+                <g class="hero-model-global-copy" data-dest-x="90" data-dest-y="122"><use href="#brain-icon"/></g>
+                <g class="hero-model-global-copy" data-dest-x="250" data-dest-y="22"><use href="#brain-icon"/></g>
+                <g class="hero-model-global-copy" data-dest-x="410" data-dest-y="122"><use href="#brain-icon"/></g>
+
+                <g class="hero-model-global-center" data-dest-x="250" data-dest-y="290"><use href="#brain-icon"/></g>
+
+                <g class="hero-model-local" data-orig-x="90" data-orig-y="122" style="color: #15803d;"><use href="#brain-icon"/></g>
+                <g class="hero-model-local" data-orig-x="250" data-orig-y="22" style="color: #ea580c;"><use href="#brain-icon"/></g>
+                <g class="hero-model-local" data-orig-x="410" data-orig-y="122" style="color: #be123c;"><use href="#brain-icon"/></g>
+              </svg>
+            `;
 
       const act2SVG = `
-        <svg viewBox="0 0 820 340" width="100%" height="100%" id="act2-svg" role="img" aria-label="Diagrama de estados das etapas de Aprendizado Federado entre Data Scientist e Data Owners">
-          ${genericSVGDefs}
-          <defs>
-            <marker id="act2-arrow-do" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
-              <polygon points="0,0.8 5.5,3 0,5.2" fill="#4b5563"/>
-            </marker>
-            <marker id="act2-arrow-ds" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
-              <polygon points="0,0.8 5.5,3 0,5.2" fill="#0369a1"/>
-            </marker>
-            <marker id="act2-arrow-gdrive" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
-              <polygon points="0,0.8 5.5,3 0,5.2" fill="#0284c7"/>
-            </marker>
+              <svg viewBox="0 0 820 340" width="100%" height="100%" id="act2-svg" role="img" aria-label="Diagrama de estados das etapas de Aprendizado Federado entre Data Scientist e Data Owners">
+                ${genericSVGDefs}
+                <defs>
+                  <marker id="act2-arrow-do" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+                    <polygon points="0,0.8 5.5,3 0,5.2" fill="#4b5563"/>
+                  </marker>
+                  <marker id="act2-arrow-ds" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+                    <polygon points="0,0.8 5.5,3 0,5.2" fill="#0369a1"/>
+                  </marker>
 
-            <!-- Google Drive (SVG Limpo & Minimalista) -->
-            <g id="gdrive-icon">
-              <path d="M-6 -14 H6 L19 8 H7 Z" fill="#FBBC04"/>
-              <path d="M-19 8 L-13 18 H13 L19 8 Z" fill="#4285F4"/>
-              <path d="M-6 -14 L-19 8 L-13 18 L0 -4 Z" fill="#34A853"/>
-            </g>
-          </defs>
+                  <!-- Google Drive (SVG Limpo & Minimalista) -->
+                  <g id="gdrive-icon">
+                    <path d="M-6 -14 H6 L19 8 H7 Z" fill="#FBBC04"/>
+                    <path d="M-19 8 L-13 18 H13 L19 8 Z" fill="#4285F4"/>
+                    <path d="M-6 -14 L-19 8 L-13 18 L0 -4 Z" fill="#34A853"/>
+                  </g>
+                </defs>
 
-          <!-- ==========================================
-               CAMADA DE CONEXÕES E SETAS (Z-INDEX FUNDO)
-               ========================================== -->
+                <!-- ==========================================
+                     CAMADA DE CONEXÕES E SETAS (Z-INDEX FUNDO)
+                     ========================================== -->
 
-          <!-- ETAPA 3: Pares conectando-se via Google Drive -->
-          <g id="act2-peer-lines" style="opacity: 0; transition: opacity 0.25s ease;">
-            <line x1="175" y1="68" x2="365" y2="152" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
-            <line x1="175" y1="170" x2="360" y2="170" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
-            <line x1="175" y1="272" x2="365" y2="188" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
-            <line x1="645" y1="170" x2="460" y2="170" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
-          </g>
+                <!-- ETAPA 2: DS solicita conexão aos DOs via Google Drive -->
+                <g id="act2-peer-request-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="640" y1="170" x2="465" y2="170" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="365" y1="150" x2="180" y2="68" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="360" y1="170" x2="180" y2="170" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="365" y1="190" x2="180" y2="272" stroke="#0369a1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#act2-arrow-ds)"/>
+                </g>
 
-          <!-- ETAPA 4: DS envia Jobs & Modelo Inicial para o Drive -> DOs -->
-          <g id="act2-ds-to-do-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
-            <!-- DS -> Drive -->
-            <line x1="640" y1="170" x2="465" y2="170" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
-            <!-- Drive -> DOs -->
-            <line x1="365" y1="150" x2="180" y2="68" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
-            <line x1="360" y1="170" x2="180" y2="170" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
-            <line x1="365" y1="190" x2="180" y2="272" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
-          </g>
+                <!-- ETAPA 3: Conexão estabelecida (ACCEPTED) entre DOs <-> Drive <-> DS -->
+                <g id="act2-peer-lines" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="175" y1="68" x2="365" y2="152" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+                  <line x1="175" y1="170" x2="360" y2="170" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+                  <line x1="175" y1="272" x2="365" y2="188" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+                  <line x1="645" y1="170" x2="460" y2="170" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+                </g>
 
-<!-- ETAPA 7: DOs enviam pesos locais para o Drive -> DS -->
-          <g id="act2-do-to-ds-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
-            <!-- DOs -> Drive -->
-            <line x1="186" y1="68" x2="356" y2="144" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="186" y1="170" x2="354" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="186" y1="272" x2="356" y2="196" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-            <!-- Drive -> DS -->
-            <line x1="468" y1="170" x2="632" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
-          </g>
+                <!-- ETAPA 5: DS sincroniza e lê metadados e dados sintéticos (mock) dos DOs -->
+                <g id="act2-mock-to-ds-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="186" y1="68" x2="356" y2="144" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="186" y1="170" x2="354" y2="170" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="186" y1="272" x2="356" y2="196" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="468" y1="170" x2="632" y2="170" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#act2-arrow-do)"/>
+                </g>
 
-          <!-- ETAPA 8: Troca Bidirecional de Rodadas (DOs <-> Drive <-> DS) -->
-          <g id="act2-exchange-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
-            <!-- DO 1 <-> Drive -->
-            <line x1="186" y1="60" x2="356" y2="136" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="356" y1="150" x2="186" y2="74" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+                <!-- ETAPA 6: DS envia Jobs & Modelo Inicial para o Drive -> DOs -->
+                <g id="act2-ds-to-do-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="640" y1="170" x2="465" y2="170" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="365" y1="150" x2="180" y2="68" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="360" y1="170" x2="180" y2="170" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
+                  <line x1="365" y1="190" x2="180" y2="272" stroke="#0369a1" stroke-width="2.2" marker-end="url(#act2-arrow-ds)"/>
+                </g>
 
-            <!-- DO 2 <-> Drive -->
-            <line x1="186" y1="162" x2="354" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="354" y1="178" x2="186" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+                <!-- ETAPA 7: DOs enviam pesos locais para o Drive -> DS -->
+                <g id="act2-do-to-ds-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="186" y1="68" x2="356" y2="144" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="186" y1="170" x2="354" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="186" y1="272" x2="356" y2="196" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="468" y1="170" x2="632" y2="170" stroke="#4b5563" stroke-width="2.2" marker-end="url(#act2-arrow-do)"/>
+                </g>
 
-            <!-- DO 3 <-> Drive -->
-            <line x1="186" y1="264" x2="356" y2="188" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="356" y1="202" x2="186" y2="278" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+                <!-- ETAPA 8: Troca Bidirecional de Rodadas (DOs <-> Drive <-> DS) -->
+                <g id="act2-exchange-arrows" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <line x1="186" y1="60" x2="356" y2="136" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="356" y1="150" x2="186" y2="74" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
-            <!-- Drive <-> DS -->
-            <line x1="468" y1="162" x2="632" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
-            <line x1="632" y1="178" x2="468" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
-          </g>
+                  <line x1="186" y1="162" x2="354" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="354" y1="178" x2="186" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
+                  <line x1="186" y1="264" x2="356" y2="188" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="356" y1="202" x2="186" y2="278" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
 
-          <!-- ==========================================
-               NÓS PRINCIPAIS (ESQUERDA, CENTRO, DIREITA)
-               ========================================== -->
+                  <line x1="468" y1="162" x2="632" y2="162" stroke="#4b5563" stroke-width="2" marker-end="url(#act2-arrow-do)"/>
+                  <line x1="632" y1="178" x2="468" y2="178" stroke="#0369a1" stroke-width="2" marker-end="url(#act2-arrow-ds)"/>
+                </g>
 
-          <!-- COLUNA ESQUERDA: DATA OWNERS -->
-          <g id="act2-do-nodes">
-            <!-- DO 1 -->
-            <use href="#client-icon" x="130" y="62"/>
-            <text x="130" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">DO 1</text>
+                <!-- ==========================================
+                     NÓS PRINCIPAIS (ESQUERDA, CENTRO, DIREITA)
+                     ========================================== -->
 
-            <!-- DO 2 -->
-            <use href="#client-icon" x="130" y="164"/>
-            <text x="130" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">DO 2</text>
+                <!-- COLUNA ESQUERDA: DATA OWNERS -->
+                <g id="act2-do-nodes">
+                  <use href="#client-icon" x="130" y="62"/>
+                  <text x="130" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">DO 1</text>
 
-            <!-- DO 3 -->
-            <use href="#client-icon" x="130" y="266"/>
-            <text x="130" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#be123c">DO 3</text>
-          </g>
+                  <use href="#client-icon" x="130" y="164"/>
+                  <text x="130" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">DO 2</text>
 
-          <!-- COLUNA CENTRAL: GOOGLE DRIVE (TRANSPORTE SYFTBOX) -->
-          <g id="act2-gdrive-node">
-            <!-- Card sutil de fundo com estética Tech Minimalista -->
-            <rect x="364" y="122" width="92" height="96" rx="12" fill="var(--bg)" stroke="var(--border)" stroke-width="1.8"/>
-            <use href="#gdrive-icon" x="410" y="156" transform="scale(1.15) translate(-53, -20)"/>
-            <text x="410" y="194" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0369a1">Google Drive</text>
-            <text x="410" y="208" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--text-muted)">SyftBox</text>
-          </g>
+                  <use href="#client-icon" x="130" y="266"/>
+                  <text x="130" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#be123c">DO 3</text>
+                </g>
 
-          <!-- COLUNA DIREITA: DATA SCIENTIST -->
-          <g id="act2-ds-node">
-            <use href="#analyst-icon" x="690" y="164"/>
-            <text x="690" y="208" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0369a1">Data Scientist (DS)</text>
-          </g>
+                <!-- COLUNA CENTRAL: GOOGLE DRIVE (TRANSPORTE SYFTBOX) -->
+                <g id="act2-gdrive-node">
+                  <rect x="364" y="122" width="92" height="96" rx="12" fill="var(--bg)" stroke="var(--border)" stroke-width="1.8"/>
+                  <use href="#gdrive-icon" x="410" y="156" transform="scale(1.15) translate(-53, -20)"/>
+                  <text x="410" y="194" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0369a1">Google Drive</text>
+                  <text x="410" y="208" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--text-muted)">SyftBox</text>
+                </g>
 
+                <!-- COLUNA DIREITA: DATA SCIENTIST -->
+                <g id="act2-ds-node">
+                  <use href="#analyst-icon" x="690" y="164"/>
+                  <text x="690" y="208" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0369a1">Data Scientist (DS)</text>
+                </g>
 
-          <!-- ==========================================
-               ELEMENTOS DINÂMICOS POR ETAPA
-               ========================================== -->
+                <!-- ==========================================
+                     ELEMENTOS DINÂMICOS POR ETAPA
+                     ========================================== -->
 
-          <!-- ETAPA 2+: Bancos de Dados Privados nos DOs -->
-          <g id="act2-dbs" style="opacity: 0; transition: opacity 0.25s ease;">
-            <g transform="translate(86, 66)" style="color: #15803d;"><use href="#db-icon"/></g>
-            <g transform="translate(86, 168)" style="color: #ea580c;"><use href="#db-icon"/></g>
-            <g transform="translate(86, 270)" style="color: #be123c;"><use href="#db-icon"/></g>
-          </g>
+                <!-- ETAPA 3: Confirmação de Peer ACCEPTED nos DOs -->
+                <g id="act2-peer-checks" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(172, 46)"><use href="#check-icon"/></g>
+                  <g transform="translate(172, 148)"><use href="#check-icon"/></g>
+                  <g transform="translate(172, 250)"><use href="#check-icon"/></g>
+                </g>
 
-          <!-- ETAPA 4: Modelo Global Inicial no DS & Arquivos de Job nos DOs -->
-          <g id="act2-model-global-init" transform="translate(744, 156)" style="opacity: 0; color: #0369a1; transition: opacity 0.25s ease;">
-            <use href="#brain-icon"/>
-          </g>
+                <!-- ETAPA 4+: Bancos de Dados Privados nos DOs -->
+                <g id="act2-dbs" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(86, 66)" style="color: #15803d;"><use href="#db-icon"/></g>
+                  <g transform="translate(86, 168)" style="color: #ea580c;"><use href="#db-icon"/></g>
+                  <g transform="translate(86, 270)" style="color: #be123c;"><use href="#db-icon"/></g>
+                </g>
 
-          <g id="act2-jobs" style="opacity: 0; transition: opacity 0.25s ease;">
-            <g transform="translate(172, 46)"><use href="#file-icon"/></g>
-            <g transform="translate(172, 148)"><use href="#file-icon"/></g>
-            <g transform="translate(172, 250)"><use href="#file-icon"/></g>
-          </g>
+                <!-- ETAPAS 4 e 5: Arquivos Sintéticos (Mock) gerados nos DOs e lidos pelo DS -->
+                <g id="act2-mock-files" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(172, 46)"><use href="#file-icon"/></g>
+                  <g transform="translate(172, 148)"><use href="#file-icon"/></g>
+                  <g transform="translate(172, 250)"><use href="#file-icon"/></g>
+                </g>
+                <g id="act2-mock-ds-file" transform="translate(744, 156)" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <use href="#file-icon"/>
+                </g>
 
-          <!-- ETAPA 5+: Aprovação (Check) nos DOs -->
-          <g id="act2-checks" style="opacity: 0; transition: opacity 0.25s ease;">
-            <g transform="translate(172, 46)"><use href="#check-icon"/></g>
-            <g transform="translate(172, 148)"><use href="#check-icon"/></g>
-            <g transform="translate(172, 250)"><use href="#check-icon"/></g>
-          </g>
+                <!-- ETAPA 6: Modelo Global Inicial no DS & Arquivos de Job nos DOs -->
+                <g id="act2-model-global-init" transform="translate(744, 156)" style="opacity: 0; color: #0369a1; transition: opacity 0.25s ease;">
+                  <use href="#brain-icon"/>
+                </g>
+                <g id="act2-jobs" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(172, 46)"><use href="#file-icon"/></g>
+                  <g transform="translate(172, 148)"><use href="#file-icon"/></g>
+                  <g transform="translate(172, 250)"><use href="#file-icon"/></g>
+                </g>
 
-          <!-- ETAPAS 5 e 6: Modelos Locais Treinados nos DOs -->
-          <g id="act2-models-local" style="opacity: 0; transition: opacity 0.25s ease;">
-            <g transform="translate(130, 24)" style="color: #15803d;"><use href="#brain-icon"/></g>
-            <g transform="translate(130, 126)" style="color: #ea580c;"><use href="#brain-icon"/></g>
-            <g transform="translate(130, 228)" style="color: #be123c;"><use href="#brain-icon"/></g>
-          </g>
+                <!-- ETAPA 7: Aprovação do Job (Check) & Modelos Locais Treinados nos DOs -->
+                <g id="act2-checks" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(172, 46)"><use href="#check-icon"/></g>
+                  <g transform="translate(172, 148)"><use href="#check-icon"/></g>
+                  <g transform="translate(172, 250)"><use href="#check-icon"/></g>
+                </g>
+                <g id="act2-models-local" style="opacity: 0; transition: opacity 0.25s ease;">
+                  <g transform="translate(130, 24)" style="color: #15803d;"><use href="#brain-icon"/></g>
+                  <g transform="translate(130, 126)" style="color: #ea580c;"><use href="#brain-icon"/></g>
+                  <g transform="translate(130, 228)" style="color: #be123c;"><use href="#brain-icon"/></g>
+                </g>
 
-          <!-- ETAPAS 8 e 9: Modelo Global Final no DS e sincronizado nos DOs -->
-          <g id="act2-model-global-final" style="opacity: 0; color: #0369a1; transition: opacity 0.25s ease;">
-            <g transform="translate(744, 156)"><use href="#brain-icon"/></g>
-            <g transform="translate(130, 24)"><use href="#brain-icon"/></g>
-            <g transform="translate(130, 126)"><use href="#brain-icon"/></g>
-            <g transform="translate(130, 228)"><use href="#brain-icon"/></g>
-          </g>
-        </svg>
-      `;
+                <!-- ETAPAS 8 e 9: Modelo Global Final no DS e sincronizado nos DOs -->
+                <g id="act2-model-global-final" style="opacity: 0; color: #0369a1; transition: opacity 0.25s ease;">
+                  <g transform="translate(744, 156)"><use href="#brain-icon"/></g>
+                  <g transform="translate(130, 24)"><use href="#brain-icon"/></g>
+                  <g transform="translate(130, 126)"><use href="#brain-icon"/></g>
+                  <g transform="translate(130, 228)"><use href="#brain-icon"/></g>
+                </g>
+              </svg>
+            `;
 
       const heroVisualContainer = document.getElementById("hero-visual");
       if (heroVisualContainer) {
         heroVisualContainer.innerHTML =
           heroSVG +
           `<button type="button" id="btn-anim-pause" class="diagram-corner-btn" aria-label="Pausar animação" title="Pausar animação">
-            <svg id="anim-pause-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <rect x="6" y="5" width="4" height="14" rx="1"></rect>
-              <rect x="14" y="5" width="4" height="14" rx="1"></rect>
-            </svg>
-          </button>`;
+                  <svg id="anim-pause-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+                    <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+                  </svg>
+                </button>`;
       }
 
       let heroTL = null;
@@ -7206,8 +7271,8 @@
       }
 
       /* =======================================
-         ATIVIDADES 1 E 2
-         ======================================= */
+               ATIVIDADES 1 E 2
+               ======================================= */
       function highlightPythonCode(rawCode) {
         const escaped = rawCode
           .replace(/&/g, "&amp;")
@@ -7248,409 +7313,409 @@
               id: "act1-estrutura-flower",
               tocLabel: "Arquitetura de Arquivos (Flower)",
               html: `
-                <h3>Estrutura do Pipeline (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
-                <p>Este notebook implementa um pipeline para simular <strong>Aprendizado Federado (AF)</strong> com a arquitetura do <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> e compará-lo diretamente com modelos <strong>Centralizados (Baselines)</strong> no conjunto de dados <em>Pima Indians Diabetes</em>.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver organização lógica do notebook</span></span></summary>
-                  <div class="act1-details-body">
-                    <p>Em um projeto padrão do Flower criado via CLI (<code>flwr new</code>), a aplicação é organizada em uma pasta com quatro arquivos principais:</p>
-                    <ul>
-                      <li><code>pyproject.toml</code> — Arquivo de configuração e dependências do projeto; declara os pontos de entrada da aplicação (<code>clientapp</code> e <code>serverapp</code>) e os parâmetros da federação (número de rodadas, fração de clientes e recursos do motor de simulação).</li>
-                      <li><code>task.py</code> — Módulo compartilhado com a definição da arquitetura do modelo, funções de carregamento e particionamento dos dados, além das rotinas de treino e avaliação local.</li>
-                      <li><code>client_app.py</code> — Implementa o <code>ClientApp</code> e a lógica de cada nó participante (como <code>NumPyClient</code>), responsável por receber parâmetros globais, treinar localmente com <code>fit</code> e retornar pesos e métricas em <code>evaluate</code>.</li>
-                      <li><code>server_app.py</code> — Implementa o <code>ServerApp</code>, definindo os parâmetros iniciais, a estratégia de agregação (como <code>FedAvg</code>) e a agregação de métricas globais entre rodadas.</li>
-                    </ul>
-                    <p><strong>Pasta com arquivos vs. Fluxo único no Google Colab:</strong> Enquanto a estrutura em pasta com módulos separados facilita a implantação distribuída e a execução pelo comando <code>flwr run</code>, no <strong>Google Colab</strong> esses mesmos papéis são estabelecidos em células sequenciais de um único notebook, iniciando <code>ClientApp</code> e <code>ServerApp</code> diretamente em memória e executando toda a federação com <code>fl.simulation.run_simulation()</code> sem precisar gerenciar múltiplos arquivos externos.</p>
-                  </div>
-                </details>
-              `,
+                      <h3>Estrutura do Pipeline (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
+                      <p>Este notebook implementa um pipeline para simular <strong>Aprendizado Federado (AF)</strong> com a arquitetura do <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> e compará-lo diretamente com modelos <strong>Centralizados (Baselines)</strong> no conjunto de dados <em>Pima Indians Diabetes</em>.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver organização lógica do notebook</span></span></summary>
+                        <div class="act1-details-body">
+                          <p>Em um projeto padrão do Flower criado via CLI (<code>flwr new</code>), a aplicação é organizada em uma pasta com quatro arquivos principais:</p>
+                          <ul>
+                            <li><code>pyproject.toml</code> — Arquivo de configuração e dependências do projeto; declara os pontos de entrada da aplicação (<code>clientapp</code> e <code>serverapp</code>) e os parâmetros da federação (número de rodadas, fração de clientes e recursos do motor de simulação).</li>
+                            <li><code>task.py</code> — Módulo compartilhado com a definição da arquitetura do modelo, funções de carregamento e particionamento dos dados, além das rotinas de treino e avaliação local.</li>
+                            <li><code>client_app.py</code> — Implementa o <code>ClientApp</code> e a lógica de cada nó participante (como <code>NumPyClient</code>), responsável por receber parâmetros globais, treinar localmente com <code>fit</code> e retornar pesos e métricas em <code>evaluate</code>.</li>
+                            <li><code>server_app.py</code> — Implementa o <code>ServerApp</code>, definindo os parâmetros iniciais, a estratégia de agregação (como <code>FedAvg</code>) e a agregação de métricas globais entre rodadas.</li>
+                          </ul>
+                          <p><strong>Pasta com arquivos vs. Fluxo único no Google Colab:</strong> Enquanto a estrutura em pasta com módulos separados facilita a implantação distribuída e a execução pelo comando <code>flwr run</code>, no <strong>Google Colab</strong> esses mesmos papéis são estabelecidos em células sequenciais de um único notebook, iniciando <code>ClientApp</code> e <code>ServerApp</code> diretamente em memória e executando toda a federação com <code>fl.simulation.run_simulation()</code> sem precisar gerenciar múltiplos arquivos externos.</p>
+                        </div>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-1-config",
               tocLabel: "1–2. Setup e Hiperparâmetros",
               html: `
-                <h3>1 e 2. Instalação, Seeds e Hiperparâmetros (<code>CONFIG</code>)</h3>
-                <p>Instalamos <code>flwr[simulation]</code>, silenciamos logs verbosos do TensorFlow/Ray e definimos todas as configurações do experimento (10 rodadas, 5 clientes, divisão 80/20 e hiperparâmetros de Keras e Regressão Logística) no dicionário <code>CONFIG</code>.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Instalação, set_global_seeds e CONFIG</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>%%capture
-!pip install -q "flwr[simulation]==1.44.0"
+                      <h3>1 e 2. Instalação, Seeds e Hiperparâmetros (<code>CONFIG</code>)</h3>
+                      <p>Instalamos <code>flwr[simulation]</code>, silenciamos logs verbosos do TensorFlow/Ray e definimos todas as configurações do experimento (10 rodadas, 5 clientes, divisão 80/20 e hiperparâmetros de Keras e Regressão Logística) no dicionário <code>CONFIG</code>.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: Instalação, set_global_seeds e CONFIG</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>%%capture
+      !pip install -q "flwr[simulation]==1.44.0"
 
-import os, random
-import numpy as np
-import tensorflow as tf
+      import os, random
+      import numpy as np
+      import tensorflow as tf
 
-def set_global_seeds(seed: int = 42) -> None:
-    os.environ["PYTHONHASHSEED"] = str(seed)
-    random.seed(seed)
-    np.random.seed(seed)
-    tf.random.set_seed(seed)
+      def set_global_seeds(seed: int = 42) -> None:
+          os.environ["PYTHONHASHSEED"] = str(seed)
+          random.seed(seed)
+          np.random.seed(seed)
+          tf.random.set_seed(seed)
 
-CONFIG = {
-    "data_url": "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pima-indians-diabetes.csv",
-    "local_cache_path": "/content/dataset_cache.csv",
-    "num_rounds": 10,
-    "num_clients": 5,
-    "test_size": 0.2,
-    "random_state": 42,
+      CONFIG = {
+          "data_url": "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pima-indians-diabetes.csv",
+          "local_cache_path": "/content/dataset_cache.csv",
+          "num_rounds": 10,
+          "num_clients": 5,
+          "test_size": 0.2,
+          "random_state": 42,
 
-    "keras_hidden_units": 16,
-    "keras_epochs": 3,
-    "keras_batch_size": 16,
+          "keras_hidden_units": 16,
+          "keras_epochs": 3,
+          "keras_batch_size": 16,
 
-    "logreg_penalty": "l2",
-    "logreg_local_epochs": 1,
+          "logreg_penalty": "l2",
+          "logreg_local_epochs": 1,
 
-    "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
-}
+          "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
+      }
 
-set_global_seeds(CONFIG["random_state"])</pre>
-                </details>
-              `,
+      set_global_seeds(CONFIG["random_state"])</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-2-dados",
               tocLabel: "3. Particionamento de Dados",
               html: `
-                <h3>3. Preparação e Particionamento Estratificado dos Dados</h3>
-                <p>O dataset é baixado uma única vez para <code>/content/dataset_cache.csv</code> e particionado via <code>StratifiedKFold</code> entre os 5 clientes, evitando gargalos de rede durante a simulação Ray. A função <code>load_client_data</code> carrega a partição do cliente e aplica a normalização global quando informada.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: prepare_federated_dataset e load_client_data</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
-    df = pd.read_csv(url, header=None)
-    skf = StratifiedKFold(n_splits=num_clients, shuffle=True, random_state=seed)
-    df["client_id"] = -1
+                      <h3>3. Preparação e Particionamento Estratificado dos Dados</h3>
+                      <p>O dataset é baixado uma única vez para <code>/content/dataset_cache.csv</code> e particionado via <code>StratifiedKFold</code> entre os 5 clientes, evitando gargalos de rede durante a simulação Ray. A função <code>load_client_data</code> carrega a partição do cliente e aplica a normalização global quando informada.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: prepare_federated_dataset e load_client_data</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
+          df = pd.read_csv(url, header=None)
+          skf = StratifiedKFold(n_splits=num_clients, shuffle=True, random_state=seed)
+          df["client_id"] = -1
 
-    for cid, (_, client_idx) in enumerate(skf.split(df, df.iloc[:, -2])):
-        df.loc[client_idx, "client_id"] = cid
+          for cid, (_, client_idx) in enumerate(skf.split(df, df.iloc[:, -2])):
+              df.loc[client_idx, "client_id"] = cid
 
-    os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-    df.to_csv(cache_path, index=False, header=None)
-    print(f"Dataset preparado e salvo em '{cache_path}' ({len(df)} amostras, {num_clients} clientes).")
+          os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+          df.to_csv(cache_path, index=False, header=None)
+          print(f"Dataset preparado e salvo em '{cache_path}' ({len(df)} amostras, {num_clients} clientes).")
 
-def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_path"], mean=None, std=None):
-    df = pd.read_csv(cache_path, header=None)
-    df_part = df[df.iloc[:, -1] == partition_id].iloc[:, :-1]
+      def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_path"], mean=None, std=None):
+          df = pd.read_csv(cache_path, header=None)
+          df_part = df[df.iloc[:, -1] == partition_id].iloc[:, :-1]
 
-    X = df_part.iloc[:, :-1].values.astype(np.float32)
-    y = df_part.iloc[:, -1].values
+          X = df_part.iloc[:, :-1].values.astype(np.float32)
+          y = df_part.iloc[:, -1].values
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=CONFIG["test_size"], random_state=CONFIG["random_state"], stratify=y
-    )
+          X_train, X_test, y_train, y_test = train_test_split(
+              X, y, test_size=CONFIG["test_size"], random_state=CONFIG["random_state"], stratify=y
+          )
 
-    if mean is not None and std is not None:
-        X_train = (X_train - mean) / std
-        X_test = (X_test - mean) / std
+          if mean is not None and std is not None:
+              X_train = (X_train - mean) / std
+              X_test = (X_test - mean) / std
 
-    return X_train, X_test, y_train, y_test</pre>
-                </details>
-              `,
+          return X_train, X_test, y_train, y_test</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-3-scaler",
               tocLabel: "4. Escalonamento (Rodada 0)",
               html: `
-                <h3>4. Escalonamento Federado (Rodada 0)</h3>
-                <p>Agrega apenas estatísticas locais suficientes (tamanhos amostrais <em>N</em><sub><em>k</em></sub>, soma e soma dos quadrados) de cada cliente para calcular a média e o desvio padrão globais exatos sem expor nenhum registro bruto.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: compute_federated_scaler</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def compute_federated_scaler(num_clients: int):
-    total_n, total_sum, total_sq_sum = 0, None, None
+                      <h3>4. Escalonamento Federado (Rodada 0)</h3>
+                      <p>Agrega apenas estatísticas locais suficientes (tamanhos amostrais <em>N</em><sub><em>k</em></sub>, soma e soma dos quadrados) de cada cliente para calcular a média e o desvio padrão globais exatos sem expor nenhum registro bruto.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: compute_federated_scaler</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>def compute_federated_scaler(num_clients: int):
+          total_n, total_sum, total_sq_sum = 0, None, None
 
-    for cid in range(num_clients):
-        X_tr, _, _, _ = load_client_data(cid)
-        total_n += X_tr.shape[0]
-        sum_local = np.sum(X_tr, axis=0)
-        sq_sum_local = np.sum(np.square(X_tr), axis=0)
+          for cid in range(num_clients):
+              X_tr, _, _, _ = load_client_data(cid)
+              total_n += X_tr.shape[0]
+              sum_local = np.sum(X_tr, axis=0)
+              sq_sum_local = np.sum(np.square(X_tr), axis=0)
 
-        total_sum = sum_local if total_sum is None else total_sum + sum_local
-        total_sq_sum = sq_sum_local if total_sq_sum is None else total_sq_sum + sq_sum_local
+              total_sum = sum_local if total_sum is None else total_sum + sum_local
+              total_sq_sum = sq_sum_local if total_sq_sum is None else total_sq_sum + sq_sum_local
 
-    global_mean = total_sum / total_n
-    global_var = (total_sq_sum / total_n) - np.square(global_mean)
-    global_std = np.sqrt(np.maximum(global_var, 1e-8))
-    return global_mean, global_std
+          global_mean = total_sum / total_n
+          global_var = (total_sq_sum / total_n) - np.square(global_mean)
+          global_std = np.sqrt(np.maximum(global_var, 1e-8))
+          return global_mean, global_std
 
-FED_MEAN, FED_STD = compute_federated_scaler(CONFIG["num_clients"])
-INPUT_DIM = FED_MEAN.shape[0]</pre>
-                </details>
-              `,
+      FED_MEAN, FED_STD = compute_federated_scaler(CONFIG["num_clients"])
+      INPUT_DIM = FED_MEAN.shape[0]</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-4-modelos",
               tocLabel: "5. Modelos (Keras & LogReg)",
               html: `
-                <h3>5. Definição dos Modelos (Keras &amp; Regressão Logística)</h3>
-                <p>Construtores dos modelos locais: uma rede MLP em <strong>Keras</strong> e uma <strong>Regressão Logística</strong> (Scikit-Learn) inicializada com <code>warm_start=True</code> e funções auxiliares <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: build_keras_model e build_logreg_model</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def build_keras_model(input_dim: int) -> keras.Model:
-    model = keras.Sequential([
-        keras.Input(shape=(input_dim,)),
-        keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
-        keras.layers.Dense(1, activation="sigmoid"),
-    ])
-    model.compile(
-    optimizer=keras.optimizers.SGD(learning_rate=0.05),
-    loss="binary_crossentropy",
-    metrics=["accuracy"],
-)   
-     return model
+                      <h3>5. Definição dos Modelos (Keras &amp; Regressão Logística)</h3>
+                      <p>Construtores dos modelos locais: uma rede MLP em <strong>Keras</strong> e uma <strong>Regressão Logística</strong> (Scikit-Learn) inicializada com <code>warm_start=True</code> e funções auxiliares <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: build_keras_model e build_logreg_model</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>def build_keras_model(input_dim: int) -> keras.Model:
+          model = keras.Sequential([
+              keras.Input(shape=(input_dim,)),
+              keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
+              keras.layers.Dense(1, activation="sigmoid"),
+          ])
+          model.compile(
+          optimizer=keras.optimizers.SGD(learning_rate=0.05),
+          loss="binary_crossentropy",
+          metrics=["accuracy"],
+      )
+           return model
 
-def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
-    model = LogisticRegression(
-        penalty=CONFIG["logreg_penalty"],
-        max_iter=max_iter,
-        warm_start=True,
-        random_state=CONFIG["random_state"],
-    )
-    model.classes_ = np.array([0, 1])
-    model.coef_ = np.zeros((1, input_dim), dtype=np.float64)
-    if model.fit_intercept:
-        model.intercept_ = np.zeros((1,), dtype=np.float64)
-    return model
+      def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
+          model = LogisticRegression(
+              penalty=CONFIG["logreg_penalty"],
+              max_iter=max_iter,
+              warm_start=True,
+              random_state=CONFIG["random_state"],
+          )
+          model.classes_ = np.array([0, 1])
+          model.coef_ = np.zeros((1, input_dim), dtype=np.float64)
+          if model.fit_intercept:
+              model.intercept_ = np.zeros((1,), dtype=np.float64)
+          return model
 
-def get_logreg_params(model: LogisticRegression):
-    return [model.coef_, model.intercept_] if model.fit_intercept else [model.coef_]
+      def get_logreg_params(model: LogisticRegression):
+          return [model.coef_, model.intercept_] if model.fit_intercept else [model.coef_]
 
-def set_logreg_params(model: LogisticRegression, params):
-    model.coef_ = params[0]
-    if model.fit_intercept:
-        model.intercept_ = params[1]
-    return model</pre>
-                </details>
-              `,
+      def set_logreg_params(model: LogisticRegression, params):
+          model.coef_ = params[0]
+          if model.fit_intercept:
+              model.intercept_ = params[1]
+          return model</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-5-clientapp",
               tocLabel: "6–7. NumPyClient e ClientApp",
               html: `
-                <h3>6 e 7. Clientes Federados (<code>NumPyClient</code>) e <code>ClientApp</code></h3>
-                <p>Cada cliente encapsula <code>get_parameters</code>, <code>fit</code> e <code>evaluate</code>. Na avaliação local, o cliente também calcula os 4 componentes da matriz de confusão (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para permitir a soma exata no servidor sem expor predições individuais.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: KerasClient, LogRegClient e create_client_fn</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>class KerasClient(fl.client.NumPyClient):
-    def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
-        self.model = model
-        self.x_train, self.y_train = x_train, y_train
-        self.x_test, self.y_test = x_test, y_test
-        self.partition_id = partition_id
+                      <h3>6 e 7. Clientes Federados (<code>NumPyClient</code>) e <code>ClientApp</code></h3>
+                      <p>Cada cliente encapsula <code>get_parameters</code>, <code>fit</code> e <code>evaluate</code>. Na avaliação local, o cliente também calcula os 4 componentes da matriz de confusão (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para permitir a soma exata no servidor sem expor predições individuais.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: KerasClient, LogRegClient e create_client_fn</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>class KerasClient(fl.client.NumPyClient):
+          def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
+              self.model = model
+              self.x_train, self.y_train = x_train, y_train
+              self.x_test, self.y_test = x_test, y_test
+              self.partition_id = partition_id
 
-    def get_parameters(self, config):
-        return self.model.get_weights()
+          def get_parameters(self, config):
+              return self.model.get_weights()
 
-    def fit(self, parameters, config_dict):
-        self.model.set_weights(parameters)
-        self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
-        return self.model.get_weights(), len(self.x_train), {}
+          def fit(self, parameters, config_dict):
+              self.model.set_weights(parameters)
+              self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
+              return self.model.get_weights(), len(self.x_train), {}
 
-    def evaluate(self, parameters, config):
-        self.model.set_weights(parameters)
-        y_prob = self.model(self.x_test, training=False).numpy().ravel()
-        y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
+          def evaluate(self, parameters, config):
+              self.model.set_weights(parameters)
+              y_prob = self.model(self.x_test, training=False).numpy().ravel()
+              y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
 
-        loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
-        y_pred = (y_prob >= 0.5).astype(int)
-        accuracy = float(np.mean(y_pred == self.y_test))
-        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+              loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
+              y_pred = (y_prob >= 0.5).astype(int)
+              accuracy = float(np.mean(y_pred == self.y_test))
+              tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
 
-        return loss, len(self.x_test), {
-            "accuracy": accuracy,
-            "client_id": self.partition_id,
-            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
-        }
+              return loss, len(self.x_test), {
+                  "accuracy": accuracy,
+                  "client_id": self.partition_id,
+                  "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+              }
 
-class LogRegClient(fl.client.NumPyClient):
-    def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
-        self.model = model
-        self.x_train, self.y_train = x_train, y_train
-        self.x_test, self.y_test = x_test, y_test
-        self.partition_id = partition_id
+      class LogRegClient(fl.client.NumPyClient):
+          def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
+              self.model = model
+              self.x_train, self.y_train = x_train, y_train
+              self.x_test, self.y_test = x_test, y_test
+              self.partition_id = partition_id
 
-    def get_parameters(self, config):
-        return get_logreg_params(self.model)
+          def get_parameters(self, config):
+              return get_logreg_params(self.model)
 
-    def fit(self, parameters, config):
-        set_logreg_params(self.model, parameters)
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            self.model.fit(self.x_train, self.y_train)
-        return get_logreg_params(self.model), len(self.x_train), {}
+          def fit(self, parameters, config):
+              set_logreg_params(self.model, parameters)
+              with warnings.catch_warnings():
+                  warnings.simplefilter("ignore")
+                  self.model.fit(self.x_train, self.y_train)
+              return get_logreg_params(self.model), len(self.x_train), {}
 
-    def evaluate(self, parameters, config):
-        set_logreg_params(self.model, parameters)
-        y_prob = self.model.predict_proba(self.x_test)
-        loss = log_loss(self.y_test, y_prob, labels=[0, 1])
+          def evaluate(self, parameters, config):
+              set_logreg_params(self.model, parameters)
+              y_prob = self.model.predict_proba(self.x_test)
+              loss = log_loss(self.y_test, y_prob, labels=[0, 1])
 
-        y_pred = (y_prob[:, 1] >= 0.5).astype(int)
-        accuracy = float(np.mean(y_pred == self.y_test))
-        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+              y_pred = (y_prob[:, 1] >= 0.5).astype(int)
+              accuracy = float(np.mean(y_pred == self.y_test))
+              tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
 
-        return float(loss), len(self.x_test), {
-            "accuracy": accuracy,
-            "client_id": self.partition_id,
-            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
-        }
+              return float(loss), len(self.x_test), {
+                  "accuracy": accuracy,
+                  "client_id": self.partition_id,
+                  "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+              }
 
-def create_client_fn(model_type: str):
-    def client_fn(context: fl.common.Context):
-        os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-        warnings.filterwarnings("ignore")
+      def create_client_fn(model_type: str):
+          def client_fn(context: fl.common.Context):
+              os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+              warnings.filterwarnings("ignore")
 
-        part_id = int(context.node_config["partition-id"])
-        set_global_seeds(CONFIG["random_state"] + part_id)
+              part_id = int(context.node_config["partition-id"])
+              set_global_seeds(CONFIG["random_state"] + part_id)
 
-        X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
-        input_dim = X_train.shape[1]
+              X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
+              input_dim = X_train.shape[1]
 
-        if model_type == "keras":
-            keras.backend.clear_session()
-            model = build_keras_model(input_dim)
-            return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
-        elif model_type == "logreg":
-            model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
-            return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
-        raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
+              if model_type == "keras":
+                  keras.backend.clear_session()
+                  model = build_keras_model(input_dim)
+                  return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+              elif model_type == "logreg":
+                  model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
+                  return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+              raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
 
-    return client_fn
+          return client_fn
 
-keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
-logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</pre>
-                </details>
-              `,
+      keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
+      logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-6-serverapp",
               tocLabel: "8. FedAvg e ServerApp",
               html: `
-                <h3>8. Estratégia de Agregação (<code>FedAvg</code>) e <code>ServerApp</code></h3>
-                <p>A função <code>weighted_average</code> calcula a acurácia global ponderada pelo número de exemplos e soma as contagens locais (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para compor a matriz de confusão global federada a cada rodada.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: weighted_average e create_server_app</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def weighted_average(metrics):
-    total_examples = sum(num_examples for num_examples, _ in metrics)
-    weighted_acc = sum(num_examples * m["accuracy"] for num_examples, m in metrics) / total_examples
+                      <h3>8. Estratégia de Agregação (<code>FedAvg</code>) e <code>ServerApp</code></h3>
+                      <p>A função <code>weighted_average</code> calcula a acurácia global ponderada pelo número de exemplos e soma as contagens locais (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) para compor a matriz de confusão global federada a cada rodada.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: weighted_average e create_server_app</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>def weighted_average(metrics):
+          total_examples = sum(num_examples for num_examples, _ in metrics)
+          weighted_acc = sum(num_examples * m["accuracy"] for num_examples, m in metrics) / total_examples
 
-    for _, m in metrics:
-        CLIENT_METRICS_LOG[int(m["client_id"])].append(float(m["accuracy"]))
+          for _, m in metrics:
+              CLIENT_METRICS_LOG[int(m["client_id"])].append(float(m["accuracy"]))
 
-    total_tn = sum(int(m["tn"]) for _, m in metrics)
-    total_fp = sum(int(m["fp"]) for _, m in metrics)
-    total_fn = sum(int(m["fn"]) for _, m in metrics)
-    total_tp = sum(int(m["tp"]) for _, m in metrics)
-    cm_global = np.array([[total_tn, total_fp], [total_fn, total_tp]], dtype=int)
+          total_tn = sum(int(m["tn"]) for _, m in metrics)
+          total_fp = sum(int(m["fp"]) for _, m in metrics)
+          total_fn = sum(int(m["fn"]) for _, m in metrics)
+          total_tp = sum(int(m["tp"]) for _, m in metrics)
+          cm_global = np.array([[total_tn, total_fp], [total_fn, total_tp]], dtype=int)
 
-    ROUND_ACCURACIES_LOG.append(float(weighted_acc))
-    ROUND_CONF_MATRICES_LOG.append(cm_global)
-    return {"Acurácia Global": weighted_acc}
+          ROUND_ACCURACIES_LOG.append(float(weighted_acc))
+          ROUND_CONF_MATRICES_LOG.append(cm_global)
+          return {"Acurácia Global": weighted_acc}
 
-def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
-    initial_params = get_initial_parameters(model_type, input_dim)
-    def server_fn(context: fl.common.Context) -> fl.server.ServerAppComponents:
-        strategy = fl.server.strategy.FedAvg(
-            fraction_fit=1.0,
-            fraction_evaluate=1.0,
-            min_fit_clients=CONFIG["num_clients"],
-            min_evaluate_clients=CONFIG["num_clients"],
-            min_available_clients=CONFIG["num_clients"],
-            initial_parameters=initial_params,
-            evaluate_metrics_aggregation_fn=weighted_average,
-        )
-        return fl.server.ServerAppComponents(
-            strategy=strategy,
-            config=fl.server.ServerConfig(num_rounds=CONFIG["num_rounds"]),
-        )
-    return fl.server.ServerApp(server_fn=server_fn)</pre>
-                </details>
-              `,
+      def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
+          initial_params = get_initial_parameters(model_type, input_dim)
+          def server_fn(context: fl.common.Context) -> fl.server.ServerAppComponents:
+              strategy = fl.server.strategy.FedAvg(
+                  fraction_fit=1.0,
+                  fraction_evaluate=1.0,
+                  min_fit_clients=CONFIG["num_clients"],
+                  min_evaluate_clients=CONFIG["num_clients"],
+                  min_available_clients=CONFIG["num_clients"],
+                  initial_parameters=initial_params,
+                  evaluate_metrics_aggregation_fn=weighted_average,
+              )
+              return fl.server.ServerAppComponents(
+                  strategy=strategy,
+                  config=fl.server.ServerConfig(num_rounds=CONFIG["num_rounds"]),
+              )
+          return fl.server.ServerApp(server_fn=server_fn)</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-7-simulacao",
               tocLabel: "9–10. Simulação e Baselines",
               html: `
-                <h3>9 e 10. Simulação Federada e Comparação com Baselines Centralizados</h3>
-                <p>Executamos as simulações federadas para Keras e Regressão Logística via <code>fl.simulation.run_simulation</code> (10 rodadas, 5 clientes) e comparamos os resultados com seus equivalentes centralizados (Keras e Regressão Logística treinados na base unificada com a mesma divisão treino/teste).</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: run_centralized_baselines e run_simulation_pair</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>def def run_centralized_baselines(num_clients: int) -> Dict:
-    set_global_seeds(CONFIG["random_state"])
+                      <h3>9 e 10. Simulação Federada e Comparação com Baselines Centralizados</h3>
+                      <p>Executamos as simulações federadas para Keras e Regressão Logística via <code>fl.simulation.run_simulation</code> (10 rodadas, 5 clientes) e comparamos os resultados com seus equivalentes centralizados (Keras e Regressão Logística treinados na base unificada com a mesma divisão treino/teste).</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>Ver código: run_centralized_baselines e run_simulation_pair</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                        <pre>def run_centralized_baselines(num_clients: int) -> Dict:
+          set_global_seeds(CONFIG["random_state"])
 
-    partitions = [load_client_data(cid) for cid in range(num_clients)]
-    X_train_global = np.vstack([p[0] for p in partitions])
-    X_test_global = np.vstack([p[1] for p in partitions])
-    y_train_global = np.concatenate([p[2] for p in partitions])
-    y_test_global = np.concatenate([p[3] for p in partitions])
+          partitions = [load_client_data(cid) for cid in range(num_clients)]
+          X_train_global = np.vstack([p[0] for p in partitions])
+          X_test_global = np.vstack([p[1] for p in partitions])
+          y_train_global = np.concatenate([p[2] for p in partitions])
+          y_test_global = np.concatenate([p[3] for p in partitions])
 
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train_global)
-    X_test_scaled = scaler.transform(X_test_global)
-    input_dim = X_train_scaled.shape[1]
+          scaler = StandardScaler()
+          X_train_scaled = scaler.fit_transform(X_train_global)
+          X_test_scaled = scaler.transform(X_test_global)
+          input_dim = X_train_scaled.shape[1]
 
-    keras_central = build_keras_model(input_dim)
-    keras_central.fit(
-        X_train_scaled,
-        y_train_global,
-        epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
-        batch_size=CONFIG["keras_batch_size"],
-        verbose=0,
-    )
-    _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
-    y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
-    cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
+          keras_central = build_keras_model(input_dim)
+          keras_central.fit(
+              X_train_scaled,
+              y_train_global,
+              epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
+              batch_size=CONFIG["keras_batch_size"],
+              verbose=0,
+          )
+          _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
+          y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
+          cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
 
-    logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        logreg_central.fit(X_train_scaled, y_train_global)
-    acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
-    y_pred_logreg = logreg_central.predict(X_test_scaled)
-    cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
+          logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
+          with warnings.catch_warnings():
+              warnings.simplefilter("ignore")
+              logreg_central.fit(X_train_scaled, y_train_global)
+          acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
+          y_pred_logreg = logreg_central.predict(X_test_scaled)
+          cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
 
-    return {
-        "keras_global": float(acc_keras_global),
-        "logreg_global": float(acc_logreg_global),
-        "keras_cm": cm_keras_central,
-        "logreg_cm": cm_logreg_central,
-    }
+          return {
+              "keras_global": float(acc_keras_global),
+              "logreg_global": float(acc_logreg_global),
+              "keras_cm": cm_keras_central,
+              "logreg_cm": cm_logreg_central,
+          }
 
-def run_simulation_pair(
-    server_app: fl.server.ServerApp,
-    client_app: fl.client.ClientApp,
-) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
-    set_global_seeds(CONFIG["random_state"])
-    CLIENT_METRICS_LOG.clear()
-    ROUND_ACCURACIES_LOG.clear()
-    ROUND_CONF_MATRICES_LOG.clear()
+      def run_simulation_pair(
+          server_app: fl.server.ServerApp,
+          client_app: fl.client.ClientApp,
+      ) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
+          set_global_seeds(CONFIG["random_state"])
+          CLIENT_METRICS_LOG.clear()
+          ROUND_ACCURACIES_LOG.clear()
+          ROUND_CONF_MATRICES_LOG.clear()
 
-    fl.simulation.run_simulation(
-        server_app=server_app,
-        client_app=client_app,
-        num_supernodes=CONFIG["num_clients"],
-        backend_config={"client_resources": CONFIG["client_resources"]},
-    )
+          fl.simulation.run_simulation(
+              server_app=server_app,
+              client_app=client_app,
+              num_supernodes=CONFIG["num_clients"],
+              backend_config={"client_resources": CONFIG["client_resources"]},
+          )
 
-    best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
-    best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
+          best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
+          best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
 
-    return (
-        list(ROUND_ACCURACIES_LOG),
-        {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
-        best_cm,
-    )
+          return (
+              list(ROUND_ACCURACIES_LOG),
+              {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
+              best_cm,
+          )
 
-acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
-acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
-central_results = run_centralized_baselines(CONFIG["num_clients"])</pre>
-                </details>
-              `,
+      acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
+      acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
+      central_results = run_centralized_baselines(CONFIG["num_clients"])</pre>
+                      </details>
+                    `,
             },
           ],
         },
@@ -7669,411 +7734,411 @@ central_results = run_centralized_baselines(CONFIG["num_clients"])</pre>
               id: "act1-estrutura-flower",
               tocLabel: "File Architecture (Flower)",
               html: `
-                <h3>Pipeline Structure (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
-                <p>This notebook implements a pipeline to simulate <strong>Federated Learning (FL)</strong> using the <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> architecture and compare it directly with <strong>Centralized (Baseline)</strong> models on the <em>Pima Indians Diabetes</em> dataset.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View logical organization of the notebook</span></span></summary>
-                  <div class="act1-details-body">
-                    <p>In a standard Flower project created via CLI (<code>flwr new</code>), the application is organized into a folder with four main files:</p>
-                    <ul>
-                      <li><code>pyproject.toml</code> — Project configuration and dependencies file; declares application entry points (<code>clientapp</code> and <code>serverapp</code>) and federation parameters (number of rounds, client fraction, and simulation engine resources).</li>
-                      <li><code>task.py</code> — Shared module containing model architecture definitions, data loading and partitioning functions, as well as local training and evaluation routines.</li>
-                      <li><code>client_app.py</code> — Implements <code>ClientApp</code> and each participating node's logic (such as <code>NumPyClient</code>), responsible for receiving global parameters, training locally with <code>fit</code>, and returning weights and metrics in <code>evaluate</code>.</li>
-                      <li><code>server_app.py</code> — Implements <code>ServerApp</code>, defining initial parameters, aggregation strategy (such as <code>FedAvg</code>), and global metric aggregation across rounds.</li>
-                    </ul>
-                    <p><strong>Multi-file folder vs. Single flow in Google Colab:</strong> While a multi-file folder structure facilitates distributed deployment and execution via <code>flwr run</code>, in <strong>Google Colab</strong> we consolidate these same roles into sequential cells of a single notebook, instantiating <code>ClientApp</code> and <code>ServerApp</code> directly in memory and running the entire federation with <code>fl.simulation.run_simulation()</code> without managing external files.</p>
-                  </div>
-                </details>
-              `,
+                      <h3>Pipeline Structure (Flower <code>ClientApp</code> &amp; <code>ServerApp</code>)</h3>
+                      <p>This notebook implements a pipeline to simulate <strong>Federated Learning (FL)</strong> using the <a href="https://flower.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--denim); font-weight: 600;">Flower (<code>flwr</code>)</a> architecture and compare it directly with <strong>Centralized (Baseline)</strong> models on the <em>Pima Indians Diabetes</em> dataset.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View logical organization of the notebook</span></span></summary>
+                        <div class="act1-details-body">
+                          <p>In a standard Flower project created via CLI (<code>flwr new</code>), the application is organized into a folder with four main files:</p>
+                          <ul>
+                            <li><code>pyproject.toml</code> — Project configuration and dependencies file; declares application entry points (<code>clientapp</code> and <code>serverapp</code>) and federation parameters (number of rounds, client fraction, and simulation engine resources).</li>
+                            <li><code>task.py</code> — Shared module containing model architecture definitions, data loading and partitioning functions, as well as local training and evaluation routines.</li>
+                            <li><code>client_app.py</code> — Implements <code>ClientApp</code> and each participating node's logic (such as <code>NumPyClient</code>), responsible for receiving global parameters, training locally with <code>fit</code>, and returning weights and metrics in <code>evaluate</code>.</li>
+                            <li><code>server_app.py</code> — Implements <code>ServerApp</code>, defining initial parameters, aggregation strategy (such as <code>FedAvg</code>), and global metric aggregation across rounds.</li>
+                          </ul>
+                          <p><strong>Multi-file folder vs. Single flow in Google Colab:</strong> While a multi-file folder structure facilitates distributed deployment and execution via <code>flwr run</code>, in <strong>Google Colab</strong> we consolidate these same roles into sequential cells of a single notebook, instantiating <code>ClientApp</code> and <code>ServerApp</code> directly in memory and running the entire federation with <code>fl.simulation.run_simulation()</code> without managing external files.</p>
+                        </div>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-1-config",
               tocLabel: "1–2. Setup & Hyperparameters",
               html: `
-                <h3>1 &amp; 2. Installation, Seeds, and Hyperparameters (<code>CONFIG</code>)</h3>
-                <p>We install <code>flwr[simulation]</code>, silence verbose TensorFlow/Ray logs, and define all experiment settings (10 rounds, 5 clients, 80/20 split, and Keras and Logistic Regression hyperparameters) in the <code>CONFIG</code> dictionary.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Installation, set_global_seeds, and CONFIG</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>%%capture
-!pip install -q "flwr[simulation]==1.44.0"
+                      <h3>1 &amp; 2. Installation, Seeds, and Hyperparameters (<code>CONFIG</code>)</h3>
+                      <p>We install <code>flwr[simulation]</code>, silence verbose TensorFlow/Ray logs, and define all experiment settings (10 rounds, 5 clients, 80/20 split, and Keras and Logistic Regression hyperparameters) in the <code>CONFIG</code> dictionary.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: Installation, set_global_seeds, and CONFIG</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>%%capture
+      !pip install -q "flwr[simulation]==1.44.0"
 
-import os, random
-import numpy as np
-import tensorflow as tf
+      import os, random
+      import numpy as np
+      import tensorflow as tf
 
-def set_global_seeds(seed: int = 42) -> None:
-    os.environ["PYTHONHASHSEED"] = str(seed)
-    random.seed(seed)
-    np.random.seed(seed)
-    tf.random.set_seed(seed)
+      def set_global_seeds(seed: int = 42) -> None:
+          os.environ["PYTHONHASHSEED"] = str(seed)
+          random.seed(seed)
+          np.random.seed(seed)
+          tf.random.set_seed(seed)
 
-CONFIG = {
-    "data_url": "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pima-indians-diabetes.csv",
-    "local_cache_path": "/content/dataset_cache.csv",
-    "num_rounds": 10,
-    "num_clients": 5,
-    "test_size": 0.2,
-    "random_state": 42,
+      CONFIG = {
+          "data_url": "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pima-indians-diabetes.csv",
+          "local_cache_path": "/content/dataset_cache.csv",
+          "num_rounds": 10,
+          "num_clients": 5,
+          "test_size": 0.2,
+          "random_state": 42,
 
-    "keras_hidden_units": 16,
-    "keras_epochs": 3,
-    "keras_batch_size": 16,
+          "keras_hidden_units": 16,
+          "keras_epochs": 3,
+          "keras_batch_size": 16,
 
-    "logreg_penalty": "l2",
-    "logreg_local_epochs": 1,
+          "logreg_penalty": "l2",
+          "logreg_local_epochs": 1,
 
-    "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
-}
+          "client_resources": {"num_cpus": 1, "num_gpus": 0.0},
+      }
 
-set_global_seeds(CONFIG["random_state"])</pre>
-                </details>
-              `,
+      set_global_seeds(CONFIG["random_state"])</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-2-dados",
               tocLabel: "3. Data Partitioning",
               html: `
-                <h3>3. Data Preparation and Stratified Partitioning</h3>
-                <p>The dataset is downloaded once to <code>/content/dataset_cache.csv</code> and partitioned via <code>StratifiedKFold</code> across the 5 clients, avoiding network bottlenecks during Ray simulation. The <code>load_client_data</code> function loads each client's partition and applies global normalization when provided.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: prepare_federated_dataset and load_client_data</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
-    df = pd.read_csv(url, header=None)
-    skf = StratifiedKFold(n_splits=num_clients, shuffle=True, random_state=seed)
-    df["client_id"] = -1
+                      <h3>3. Data Preparation and Stratified Partitioning</h3>
+                      <p>The dataset is downloaded once to <code>/content/dataset_cache.csv</code> and partitioned via <code>StratifiedKFold</code> across the 5 clients, avoiding network bottlenecks during Ray simulation. The <code>load_client_data</code> function loads each client's partition and applies global normalization when provided.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: prepare_federated_dataset and load_client_data</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>def prepare_federated_dataset(url: str, cache_path: str, num_clients: int, seed: int = 42) -> None:
+          df = pd.read_csv(url, header=None)
+          skf = StratifiedKFold(n_splits=num_clients, shuffle=True, random_state=seed)
+          df["client_id"] = -1
 
-    for cid, (_, client_idx) in enumerate(skf.split(df, df.iloc[:, -2])):
-        df.loc[client_idx, "client_id"] = cid
+          for cid, (_, client_idx) in enumerate(skf.split(df, df.iloc[:, -2])):
+              df.loc[client_idx, "client_id"] = cid
 
-    os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-    df.to_csv(cache_path, index=False, header=None)
-    print(f"Dataset prepared and saved at '{cache_path}' ({len(df)} samples, {num_clients} clients).")
+          os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+          df.to_csv(cache_path, index=False, header=None)
+          print(f"Dataset prepared and saved at '{cache_path}' ({len(df)} samples, {num_clients} clients).")
 
-def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_path"], mean=None, std=None):
-    df = pd.read_csv(cache_path, header=None)
-    df_part = df[df.iloc[:, -1] == partition_id].iloc[:, :-1]
+      def load_client_data(partition_id: int, cache_path: str = CONFIG["local_cache_path"], mean=None, std=None):
+          df = pd.read_csv(cache_path, header=None)
+          df_part = df[df.iloc[:, -1] == partition_id].iloc[:, :-1]
 
-    X = df_part.iloc[:, :-1].values.astype(np.float32)
-    y = df_part.iloc[:, -1].values
+          X = df_part.iloc[:, :-1].values.astype(np.float32)
+          y = df_part.iloc[:, -1].values
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=CONFIG["test_size"], random_state=CONFIG["random_state"], stratify=y
-    )
+          X_train, X_test, y_train, y_test = train_test_split(
+              X, y, test_size=CONFIG["test_size"], random_state=CONFIG["random_state"], stratify=y
+          )
 
-    if mean is not None and std is not None:
-        X_train = (X_train - mean) / std
-        X_test = (X_test - mean) / std
+          if mean is not None and std is not None:
+              X_train = (X_train - mean) / std
+              X_test = (X_test - mean) / std
 
-    return X_train, X_test, y_train, y_test</pre>
-                </details>
-              `,
+          return X_train, X_test, y_train, y_test</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-3-scaler",
               tocLabel: "4. Scaling (Round 0)",
               html: `
-                <h3>4. Federated Scaling (Round 0)</h3>
-                <p>Aggregates only sufficient local statistics (sample sizes <em>N</em><sub><em>k</em></sub>, sum, and sum of squares) from each client to compute exact global mean and standard deviation without exposing any raw records.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: compute_federated_scaler</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def compute_federated_scaler(num_clients: int):
-    total_n, total_sum, total_sq_sum = 0, None, None
+                      <h3>4. Federated Scaling (Round 0)</h3>
+                      <p>Aggregates only sufficient local statistics (sample sizes <em>N</em><sub><em>k</em></sub>, sum, and sum of squares) from each client to compute exact global mean and standard deviation without exposing any raw records.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: compute_federated_scaler</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>def compute_federated_scaler(num_clients: int):
+          total_n, total_sum, total_sq_sum = 0, None, None
 
-    for cid in range(num_clients):
-        X_tr, _, _, _ = load_client_data(cid)
-        total_n += X_tr.shape[0]
-        sum_local = np.sum(X_tr, axis=0)
-        sq_sum_local = np.sum(np.square(X_tr), axis=0)
+          for cid in range(num_clients):
+              X_tr, _, _, _ = load_client_data(cid)
+              total_n += X_tr.shape[0]
+              sum_local = np.sum(X_tr, axis=0)
+              sq_sum_local = np.sum(np.square(X_tr), axis=0)
 
-        total_sum = sum_local if total_sum is None else total_sum + sum_local
-        total_sq_sum = sq_sum_local if total_sq_sum is None else total_sq_sum + sq_sum_local
+              total_sum = sum_local if total_sum is None else total_sum + sum_local
+              total_sq_sum = sq_sum_local if total_sq_sum is None else total_sq_sum + sq_sum_local
 
-    global_mean = total_sum / total_n
-    global_var = (total_sq_sum / total_n) - np.square(global_mean)
-    global_std = np.sqrt(np.maximum(global_var, 1e-8))
-    return global_mean, global_std
+          global_mean = total_sum / total_n
+          global_var = (total_sq_sum / total_n) - np.square(global_mean)
+          global_std = np.sqrt(np.maximum(global_var, 1e-8))
+          return global_mean, global_std
 
-FED_MEAN, FED_STD = compute_federated_scaler(CONFIG["num_clients"])
-INPUT_DIM = FED_MEAN.shape[0]</pre>
-                </details>
-              `,
+      FED_MEAN, FED_STD = compute_federated_scaler(CONFIG["num_clients"])
+      INPUT_DIM = FED_MEAN.shape[0]</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-4-modelos",
               tocLabel: "5. Models (Keras & LogReg)",
               html: `
-                <h3>5. Model Definitions (Keras &amp; Logistic Regression)</h3>
-                <p>Local model builders: an MLP network in <strong>Keras</strong> and a <strong>Logistic Regression</strong> (Scikit-Learn) initialized with <code>warm_start=True</code> along with helper functions <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: build_keras_model and build_logreg_model</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def build_keras_model(input_dim: int) -> keras.Model:
-    model = keras.Sequential([
-        keras.Input(shape=(input_dim,)),
-        keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
-        keras.layers.Dense(1, activation="sigmoid"),
-    ])
-    model.compile(
-    optimizer=keras.optimizers.SGD(learning_rate=0.05),
-    loss="binary_crossentropy",
-    metrics=["accuracy"],
-)
-    return model
+                      <h3>5. Model Definitions (Keras &amp; Logistic Regression)</h3>
+                      <p>Local model builders: an MLP network in <strong>Keras</strong> and a <strong>Logistic Regression</strong> (Scikit-Learn) initialized with <code>warm_start=True</code> along with helper functions <code>get_logreg_params</code> / <code>set_logreg_params</code>.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: build_keras_model and build_logreg_model</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>def build_keras_model(input_dim: int) -> keras.Model:
+          model = keras.Sequential([
+              keras.Input(shape=(input_dim,)),
+              keras.layers.Dense(CONFIG["keras_hidden_units"], activation="relu"),
+              keras.layers.Dense(1, activation="sigmoid"),
+          ])
+          model.compile(
+          optimizer=keras.optimizers.SGD(learning_rate=0.05),
+          loss="binary_crossentropy",
+          metrics=["accuracy"],
+      )
+          return model
 
-def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
-    model = LogisticRegression(
-        penalty=CONFIG["logreg_penalty"],
-        max_iter=max_iter,
-        warm_start=True,
-        random_state=CONFIG["random_state"],
-    )
-    model.classes_ = np.array([0, 1])
-    model.coef_ = np.zeros((1, input_dim), dtype=np.float64)
-    if model.fit_intercept:
-        model.intercept_ = np.zeros((1,), dtype=np.float64)
-    return model
+      def build_logreg_model(input_dim: int, max_iter: int) -> LogisticRegression:
+          model = LogisticRegression(
+              penalty=CONFIG["logreg_penalty"],
+              max_iter=max_iter,
+              warm_start=True,
+              random_state=CONFIG["random_state"],
+          )
+          model.classes_ = np.array([0, 1])
+          model.coef_ = np.zeros((1, input_dim), dtype=np.float64)
+          if model.fit_intercept:
+              model.intercept_ = np.zeros((1,), dtype=np.float64)
+          return model
 
-def get_logreg_params(model: LogisticRegression):
-    return [model.coef_, model.intercept_] if model.fit_intercept else [model.coef_]
+      def get_logreg_params(model: LogisticRegression):
+          return [model.coef_, model.intercept_] if model.fit_intercept else [model.coef_]
 
-def set_logreg_params(model: LogisticRegression, params):
-    model.coef_ = params[0]
-    if model.fit_intercept:
-        model.intercept_ = params[1]
-    return model</pre>
-                </details>
-              `,
+      def set_logreg_params(model: LogisticRegression, params):
+          model.coef_ = params[0]
+          if model.fit_intercept:
+              model.intercept_ = params[1]
+          return model</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-5-clientapp",
               tocLabel: "6–7. NumPyClient & ClientApp",
               html: `
-                <h3>6 &amp; 7. Federated Clients (<code>NumPyClient</code>) &amp; <code>ClientApp</code></h3>
-                <p>Each client encapsulates <code>get_parameters</code>, <code>fit</code>, and <code>evaluate</code>. During local evaluation, the client also computes the 4 confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) so the server can sum them exactly without exposing individual predictions.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: KerasClient, LogRegClient, and create_client_fn</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>class KerasClient(fl.client.NumPyClient):
-    def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
-        self.model = model
-        self.x_train, self.y_train = x_train, y_train
-        self.x_test, self.y_test = x_test, y_test
-        self.partition_id = partition_id
+                      <h3>6 &amp; 7. Federated Clients (<code>NumPyClient</code>) &amp; <code>ClientApp</code></h3>
+                      <p>Each client encapsulates <code>get_parameters</code>, <code>fit</code>, and <code>evaluate</code>. During local evaluation, the client also computes the 4 confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) so the server can sum them exactly without exposing individual predictions.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: KerasClient, LogRegClient, and create_client_fn</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>class KerasClient(fl.client.NumPyClient):
+          def __init__(self, model, x_train, y_train, x_test, y_test, partition_id: int):
+              self.model = model
+              self.x_train, self.y_train = x_train, y_train
+              self.x_test, self.y_test = x_test, y_test
+              self.partition_id = partition_id
 
-    def get_parameters(self, config):
-        return self.model.get_weights()
+          def get_parameters(self, config):
+              return self.model.get_weights()
 
-    def fit(self, parameters, config_dict):
-        self.model.set_weights(parameters)
-        self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
-        return self.model.get_weights(), len(self.x_train), {}
+          def fit(self, parameters, config_dict):
+              self.model.set_weights(parameters)
+              self.model.fit(self.x_train, self.y_train, epochs=CONFIG["keras_epochs"], batch_size=CONFIG["keras_batch_size"], verbose=0)
+              return self.model.get_weights(), len(self.x_train), {}
 
-    def evaluate(self, parameters, config):
-        self.model.set_weights(parameters)
-        y_prob = self.model(self.x_test, training=False).numpy().ravel()
-        y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
+          def evaluate(self, parameters, config):
+              self.model.set_weights(parameters)
+              y_prob = self.model(self.x_test, training=False).numpy().ravel()
+              y_prob_clipped = np.clip(y_prob, 1e-7, 1.0 - 1e-7)
 
-        loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
-        y_pred = (y_prob >= 0.5).astype(int)
-        accuracy = float(np.mean(y_pred == self.y_test))
-        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+              loss = float(log_loss(self.y_test, y_prob_clipped, labels=[0, 1]))
+              y_pred = (y_prob >= 0.5).astype(int)
+              accuracy = float(np.mean(y_pred == self.y_test))
+              tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
 
-        return loss, len(self.x_test), {
-            "accuracy": accuracy,
-            "client_id": self.partition_id,
-            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
-        }
+              return loss, len(self.x_test), {
+                  "accuracy": accuracy,
+                  "client_id": self.partition_id,
+                  "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+              }
 
-class LogRegClient(fl.client.NumPyClient):
-    def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
-        self.model = model
-        self.x_train, self.y_train = x_train, y_train
-        self.x_test, self.y_test = x_test, y_test
-        self.partition_id = partition_id
+      class LogRegClient(fl.client.NumPyClient):
+          def __init__(self, model: LogisticRegression, x_train, y_train, x_test, y_test, partition_id: int):
+              self.model = model
+              self.x_train, self.y_train = x_train, y_train
+              self.x_test, self.y_test = x_test, y_test
+              self.partition_id = partition_id
 
-    def get_parameters(self, config):
-        return get_logreg_params(self.model)
+          def get_parameters(self, config):
+              return get_logreg_params(self.model)
 
-    def fit(self, parameters, config):
-        set_logreg_params(self.model, parameters)
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            self.model.fit(self.x_train, self.y_train)
-        return get_logreg_params(self.model), len(self.x_train), {}
+          def fit(self, parameters, config):
+              set_logreg_params(self.model, parameters)
+              with warnings.catch_warnings():
+                  warnings.simplefilter("ignore")
+                  self.model.fit(self.x_train, self.y_train)
+              return get_logreg_params(self.model), len(self.x_train), {}
 
-    def evaluate(self, parameters, config):
-        set_logreg_params(self.model, parameters)
-        y_prob = self.model.predict_proba(self.x_test)
-        loss = log_loss(self.y_test, y_prob, labels=[0, 1])
+          def evaluate(self, parameters, config):
+              set_logreg_params(self.model, parameters)
+              y_prob = self.model.predict_proba(self.x_test)
+              loss = log_loss(self.y_test, y_prob, labels=[0, 1])
 
-        y_pred = (y_prob[:, 1] >= 0.5).astype(int)
-        accuracy = float(np.mean(y_pred == self.y_test))
-        tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
+              y_pred = (y_prob[:, 1] >= 0.5).astype(int)
+              accuracy = float(np.mean(y_pred == self.y_test))
+              tn, fp, fn, tp = confusion_matrix(self.y_test, y_pred, labels=[0, 1]).ravel()
 
-        return float(loss), len(self.x_test), {
-            "accuracy": accuracy,
-            "client_id": self.partition_id,
-            "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
-        }
+              return float(loss), len(self.x_test), {
+                  "accuracy": accuracy,
+                  "client_id": self.partition_id,
+                  "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
+              }
 
-def create_client_fn(model_type: str):
-    def client_fn(context: fl.common.Context):
-        os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-        warnings.filterwarnings("ignore")
+      def create_client_fn(model_type: str):
+          def client_fn(context: fl.common.Context):
+              os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+              warnings.filterwarnings("ignore")
 
-        part_id = int(context.node_config["partition-id"])
-        set_global_seeds(CONFIG["random_state"] + part_id)
+              part_id = int(context.node_config["partition-id"])
+              set_global_seeds(CONFIG["random_state"] + part_id)
 
-        X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
-        input_dim = X_train.shape[1]
+              X_train, X_test, y_train, y_test = load_client_data(part_id, mean=FED_MEAN, std=FED_STD)
+              input_dim = X_train.shape[1]
 
-        if model_type == "keras":
-            keras.backend.clear_session()
-            model = build_keras_model(input_dim)
-            return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
-        elif model_type == "logreg":
-            model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
-            return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
-        raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
+              if model_type == "keras":
+                  keras.backend.clear_session()
+                  model = build_keras_model(input_dim)
+                  return KerasClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+              elif model_type == "logreg":
+                  model = build_logreg_model(input_dim, max_iter=CONFIG["logreg_local_epochs"])
+                  return LogRegClient(model, X_train, y_train, X_test, y_test, part_id).to_client()
+              raise ValueError(f"Tipo de modelo desconhecido: {model_type}")
 
-    return client_fn
+          return client_fn
 
 
-keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
-logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</pre>
-                </details>
-              `,
+      keras_client_app = fl.client.ClientApp(client_fn=create_client_fn("keras"))
+      logreg_client_app = fl.client.ClientApp(client_fn=create_client_fn("logreg"))</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-6-serverapp",
               tocLabel: "8. FedAvg & ServerApp",
               html: `
-                <h3>8. Aggregation Strategy (<code>FedAvg</code>) &amp; <code>ServerApp</code></h3>
-                <p>The <code>weighted_average</code> function computes sample-weighted global accuracy and sums local confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) to build the global federated confusion matrix at every round.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: weighted_average and create_server_app</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def weighted_average(metrics):
-    total_examples = sum(num_examples for num_examples, _ in metrics)
-    weighted_acc = sum(num_examples * m["accuracy"] for num_examples, m in metrics) / total_examples
+                      <h3>8. Aggregation Strategy (<code>FedAvg</code>) &amp; <code>ServerApp</code></h3>
+                      <p>The <code>weighted_average</code> function computes sample-weighted global accuracy and sums local confusion matrix counts (<code>tn</code>, <code>fp</code>, <code>fn</code>, <code>tp</code>) to build the global federated confusion matrix at every round.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: weighted_average and create_server_app</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>def weighted_average(metrics):
+          total_examples = sum(num_examples for num_examples, _ in metrics)
+          weighted_acc = sum(num_examples * m["accuracy"] for num_examples, m in metrics) / total_examples
 
-    for _, m in metrics:
-        CLIENT_METRICS_LOG[int(m["client_id"])].append(float(m["accuracy"]))
+          for _, m in metrics:
+              CLIENT_METRICS_LOG[int(m["client_id"])].append(float(m["accuracy"]))
 
-    total_tn = sum(int(m["tn"]) for _, m in metrics)
-    total_fp = sum(int(m["fp"]) for _, m in metrics)
-    total_fn = sum(int(m["fn"]) for _, m in metrics)
-    total_tp = sum(int(m["tp"]) for _, m in metrics)
-    cm_global = np.array([[total_tn, total_fp], [total_fn, total_tp]], dtype=int)
+          total_tn = sum(int(m["tn"]) for _, m in metrics)
+          total_fp = sum(int(m["fp"]) for _, m in metrics)
+          total_fn = sum(int(m["fn"]) for _, m in metrics)
+          total_tp = sum(int(m["tp"]) for _, m in metrics)
+          cm_global = np.array([[total_tn, total_fp], [total_fn, total_tp]], dtype=int)
 
-    ROUND_ACCURACIES_LOG.append(float(weighted_acc))
-    ROUND_CONF_MATRICES_LOG.append(cm_global)
-    return {"Global Accuracy": weighted_acc}
+          ROUND_ACCURACIES_LOG.append(float(weighted_acc))
+          ROUND_CONF_MATRICES_LOG.append(cm_global)
+          return {"Global Accuracy": weighted_acc}
 
-def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
-    initial_params = get_initial_parameters(model_type, input_dim)
-    def server_fn(context: fl.common.Context) -> fl.server.ServerAppComponents:
-        strategy = fl.server.strategy.FedAvg(
-            fraction_fit=1.0,
-            fraction_evaluate=1.0,
-            min_fit_clients=CONFIG["num_clients"],
-            min_evaluate_clients=CONFIG["num_clients"],
-            min_available_clients=CONFIG["num_clients"],
-            initial_parameters=initial_params,
-            evaluate_metrics_aggregation_fn=weighted_average,
-        )
-        return fl.server.ServerAppComponents(
-            strategy=strategy,
-            config=fl.server.ServerConfig(num_rounds=CONFIG["num_rounds"]),
-        )
-    return fl.server.ServerApp(server_fn=server_fn)</pre>
-                </details>
-              `,
+      def create_server_app(model_type: str, input_dim: int) -> fl.server.ServerApp:
+          initial_params = get_initial_parameters(model_type, input_dim)
+          def server_fn(context: fl.common.Context) -> fl.server.ServerAppComponents:
+              strategy = fl.server.strategy.FedAvg(
+                  fraction_fit=1.0,
+                  fraction_evaluate=1.0,
+                  min_fit_clients=CONFIG["num_clients"],
+                  min_evaluate_clients=CONFIG["num_clients"],
+                  min_available_clients=CONFIG["num_clients"],
+                  initial_parameters=initial_params,
+                  evaluate_metrics_aggregation_fn=weighted_average,
+              )
+              return fl.server.ServerAppComponents(
+                  strategy=strategy,
+                  config=fl.server.ServerConfig(num_rounds=CONFIG["num_rounds"]),
+              )
+          return fl.server.ServerApp(server_fn=server_fn)</pre>
+                      </details>
+                    `,
             },
             {
               id: "act1-passo-7-simulacao",
               tocLabel: "9–10. Simulation & Baselines",
               html: `
-                <h3>9 &amp; 10. Federated Simulation &amp; Centralized Baselines</h3>
-                <p>We execute federated simulations for Keras and Logistic Regression via <code>fl.simulation.run_simulation</code> (10 rounds, 5 clients) and compare the results against their centralized counterparts trained on the unified dataset using the same train/test split.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: run_centralized_baselines and run_simulation_pair</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>def run_centralized_baselines(num_clients: int) -> Dict:
-    set_global_seeds(CONFIG["random_state"])
+                      <h3>9 &amp; 10. Federated Simulation &amp; Centralized Baselines</h3>
+                      <p>We execute federated simulations for Keras and Logistic Regression via <code>fl.simulation.run_simulation</code> (10 rounds, 5 clients) and compare the results against their centralized counterparts trained on the unified dataset using the same train/test split.</p>
+                      <details class="act1-code-details">
+                        <summary><span class="act1-summary-left"><span>View code: run_centralized_baselines and run_simulation_pair</span></span></summary>
+                        <div class="act1-code-toolbar"><span>Python • Colab</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                        <pre>def run_centralized_baselines(num_clients: int) -> Dict:
+          set_global_seeds(CONFIG["random_state"])
 
-    partitions = [load_client_data(cid) for cid in range(num_clients)]
-    X_train_global = np.vstack([p[0] for p in partitions])
-    X_test_global = np.vstack([p[1] for p in partitions])
-    y_train_global = np.concatenate([p[2] for p in partitions])
-    y_test_global = np.concatenate([p[3] for p in partitions])
+          partitions = [load_client_data(cid) for cid in range(num_clients)]
+          X_train_global = np.vstack([p[0] for p in partitions])
+          X_test_global = np.vstack([p[1] for p in partitions])
+          y_train_global = np.concatenate([p[2] for p in partitions])
+          y_test_global = np.concatenate([p[3] for p in partitions])
 
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train_global)
-    X_test_scaled = scaler.transform(X_test_global)
-    input_dim = X_train_scaled.shape[1]
+          scaler = StandardScaler()
+          X_train_scaled = scaler.fit_transform(X_train_global)
+          X_test_scaled = scaler.transform(X_test_global)
+          input_dim = X_train_scaled.shape[1]
 
-    keras_central = build_keras_model(input_dim)
-    keras_central.fit(
-        X_train_scaled,
-        y_train_global,
-        epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
-        batch_size=CONFIG["keras_batch_size"],
-        verbose=0,
-    )
-    _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
-    y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
-    cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
+          keras_central = build_keras_model(input_dim)
+          keras_central.fit(
+              X_train_scaled,
+              y_train_global,
+              epochs=CONFIG["num_rounds"] * CONFIG["keras_epochs"],
+              batch_size=CONFIG["keras_batch_size"],
+              verbose=0,
+          )
+          _, acc_keras_global = keras_central.evaluate(X_test_scaled, y_test_global, verbose=0)
+          y_pred_keras = (keras_central.predict(X_test_scaled, verbose=0) >= 0.5).astype(int).ravel()
+          cm_keras_central = confusion_matrix(y_test_global, y_pred_keras, labels=[0, 1])
 
-    logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        logreg_central.fit(X_train_scaled, y_train_global)
-    acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
-    y_pred_logreg = logreg_central.predict(X_test_scaled)
-    cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
+          logreg_central = build_logreg_model(input_dim, max_iter=CONFIG["num_rounds"] * CONFIG["logreg_local_epochs"])
+          with warnings.catch_warnings():
+              warnings.simplefilter("ignore")
+              logreg_central.fit(X_train_scaled, y_train_global)
+          acc_logreg_global = logreg_central.score(X_test_scaled, y_test_global)
+          y_pred_logreg = logreg_central.predict(X_test_scaled)
+          cm_logreg_central = confusion_matrix(y_test_global, y_pred_logreg, labels=[0, 1])
 
-    return {
-        "keras_global": float(acc_keras_global),
-        "logreg_global": float(acc_logreg_global),
-        "keras_cm": cm_keras_central,
-        "logreg_cm": cm_logreg_central,
-    }
+          return {
+              "keras_global": float(acc_keras_global),
+              "logreg_global": float(acc_logreg_global),
+              "keras_cm": cm_keras_central,
+              "logreg_cm": cm_logreg_central,
+          }
 
-def run_simulation_pair(
-    server_app: fl.server.ServerApp,
-    client_app: fl.client.ClientApp,
-) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
-    set_global_seeds(CONFIG["random_state"])
-    CLIENT_METRICS_LOG.clear()
-    ROUND_ACCURACIES_LOG.clear()
-    ROUND_CONF_MATRICES_LOG.clear()
+      def run_simulation_pair(
+          server_app: fl.server.ServerApp,
+          client_app: fl.client.ClientApp,
+      ) -> Tuple[List[float], Dict[int, List[float]], np.ndarray]:
+          set_global_seeds(CONFIG["random_state"])
+          CLIENT_METRICS_LOG.clear()
+          ROUND_ACCURACIES_LOG.clear()
+          ROUND_CONF_MATRICES_LOG.clear()
 
-    fl.simulation.run_simulation(
-        server_app=server_app,
-        client_app=client_app,
-        num_supernodes=CONFIG["num_clients"],
-        backend_config={"client_resources": CONFIG["client_resources"]},
-    )
+          fl.simulation.run_simulation(
+              server_app=server_app,
+              client_app=client_app,
+              num_supernodes=CONFIG["num_clients"],
+              backend_config={"client_resources": CONFIG["client_resources"]},
+          )
 
-    best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
-    best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
+          best_round_idx = int(np.argmax(ROUND_ACCURACIES_LOG))
+          best_cm = ROUND_CONF_MATRICES_LOG[best_round_idx]
 
-    return (
-        list(ROUND_ACCURACIES_LOG),
-        {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
-        best_cm,
-    )
+          return (
+              list(ROUND_ACCURACIES_LOG),
+              {k: list(v) for k, v in CLIENT_METRICS_LOG.items()},
+              best_cm,
+          )
 
-acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
-acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
-central_results = run_centralized_baselines(CONFIG["num_clients"])
-</pre>
-                </details>
-              `,
+      acc_keras_fed, hist_clientes_keras, cm_keras_fed = run_simulation_pair(keras_server_app, keras_client_app)
+      acc_logreg_fed, hist_clientes_logreg, cm_logreg_fed = run_simulation_pair(logreg_server_app, logreg_client_app)
+      central_results = run_centralized_baselines(CONFIG["num_clients"])
+      </pre>
+                      </details>
+                    `,
             },
           ],
         },
@@ -8089,16 +8154,23 @@ central_results = run_centralized_baselines(CONFIG["num_clients"])
           prevFooterLabel: "← Voltar para Atividade 1",
           diagramTitle: "Fluxo Visual da Rodada Federada (syft-flwr)",
           diagramDesc:
-            "Clique nos círculos abaixo para alternar entre as etapas do protocolo entre Data Scientist (DS) e Data Owners (DO1, DO2, DO3).",
+            "Clique nos círculos abaixo (ou nas etapas do menu lateral) para alternar entre as fases do protocolo entre Data Scientist (DS) e Data Owners (DO1, DO2, DO3).",
+          svgAriaLabel:
+            "Diagrama de estados das etapas de Aprendizado Federado entre Data Scientist e Data Owners",
+          noteHtml:
+            '<p style="margin: 0 0 8px 0;"><strong>Observação 1:</strong> Nessa atividade, o uso do pacote <code>syft-flwr</code> exige permitir que o código acesse seus dados do Google Drive e Google Cloud. Por esse motivo, recomenda-se o uso de <strong>contas Google exclusivas</strong> para esse fim e <strong>distintas</strong> para o Data Scientist (DS) e cada Data Owner (DO). Após o uso do pacote, o acesso pode ser revogado seguindo o caminho:<br>' +
+            '<span style="display: inline-block; margin-top: 4px; font-weight: 600;">Conta do Google &rarr; Apps vinculados &rarr; Third-party authored notebook code &rarr; Excluir tudo</span>.</p>' +
+            '<p style="margin: 0;"><strong>Nota 2:</strong> Após concluir uma execução sem erros, você pode usar <code>delete_syftbox()</code> (Etapa 9), mas <strong>para garantir um início limpo ou reiniciar após um erro, exclua diretamente no seu Google Drive quaisquer pastas residuais do SyftBox</strong> (ex.: <code>SyftBox_*</code>), verifique na aba lateral <strong>Arquivos</strong> do Colab (<code>/content</code>) se não restaram pastas antigas (<code>SyftBox_*</code>, <code>dataset/</code> ou <code>fl-diabetes-prediction/</code>) e reinicie o ambiente de execução do Colab.</p>',
           diagramCaptions: [
-            "Etapa 1: O Data Scientist (DS) inicia o ambiente, enquanto os Data Owners (DO1, DO2, DO3) mantêm seus dados privados.",
-            "Etapa 2: Cada Data Owner (DO1, DO2, DO3) inicia seu cliente SyftBox e registra seu dataset privado localmente.",
-            "Etapa 3: O Data Scientist (DS) conecta-se ao SyftBox e visualiza os pares DO1, DO2 e DO3 na rede via Google Drive.",
-            "Etapa 4: O Data Scientist (DS) define o modelo inicial e envia os jobs aos Data Owners através do Google Drive.",
-            "Etapas 5 e 6: Cada Data Owner verifica os pedidos recebidos, aprova o código e treina o modelo localmente sobre seus dados.",
-            "Etapa 7: Os Data Owners enviam apenas os pesos locais treinados ao Data Scientist (DS) via Google Drive.",
-            "Etapa 8: Os modelos locais são agregados (FedAvg) no Data Scientist (DS) e o modelo global retorna aos Data Owners em rodadas iterativas.",
-            "Etapa 9: Rodadas concluídas — o modelo global atualizado permanece disponível para o Data Scientist e todos os Data Owners.",
+            "Etapa 1: Data Owners (DOs) e Data Scientist (DS) instalam os pacotes <code>syft-flwr</code> e <code>syft-client</code> e realizam login com contas Google distintas.",
+            "Etapa 2: Data Scientist (DS) se conecta ao SyftBox e envia pedidos de conexão (<code>add_peer</code>) aos Data Owners (DOs) via Google Drive.",
+            "Etapa 3: Data Owners (DOs) carregam e aprovam os pedidos de conexão do Data Scientist (DS) até o estado <code>ACCEPTED</code>.",
+            "Etapa 4: Cada Data Owner (DO) define sua partição (<code>1/N</code>), baixa os dados, gera dados sintéticos (<code>mock</code>), inspeciona e publica o dataset.",
+            "Etapa 5: Data Scientist (DS) aguarda ~15s, sincroniza arquivos com os Data Owners (DOs) e valida metadados e dados sintéticos (<code>mock</code>).",
+            "Etapa 6: Data Scientist (DS) aplica <code>bootstrap</code> no projeto Flower e submete os jobs aos Data Owners (DOs) via Google Drive.",
+            "Etapa 7: Cada Data Owner (DO) sincroniza, revisa e aprova o job recebido e executa o treinamento local nos dados privados.",
+            "Etapa 8: Data Scientist (DS) executa o servidor agregador Flower (<code>main.py</code>), agregando pesos locais via <code>FedAvg</code> em rodadas iterativas.",
+            "Etapa 9: Rodadas concluídas — o modelo global atualizado fica disponível para DS e DOs, e os recursos do SyftBox podem ser limpos opcionalmente com <code>delete_syftbox()</code>.",
           ],
           sections: [
             {
@@ -8115,141 +8187,252 @@ central_results = run_centralized_baselines(CONFIG["num_clients"])
             },
             {
               id: "act2-passo-1",
-              tocLabel: "1. Setup do Ambiente",
+              stepIndex: 0,
+              tocLabel: "1. Instalação e Login",
               html: `
-                <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Instalação de Dependências e Login no SyftBox</h3>
-                <p>Tanto o Data Owner quanto o Data Scientist instalam o pacote <code>syft-flwr</code> e realizam autenticação via <code>syft_client.login()</code>, vinculando o Google Drive como camada de transporte assíncrono de arquivos e mensagens.</p>
+                <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Instalação de Pacotes e Login com Contas Google</h3>
+                <p>Todos os Data Owners (DOs) e o Data Scientist (DS) instalam <code>syft-flwr</code> e <code>syft-client</code> com versões travadas e realizam login interativo usando <strong>contas Google distintas</strong> (<code>sc.login_do</code> nos DOs e <code>sc.login_ds</code> no DS).</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Instalação e login com syft_client</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Instalação e login (DO e DS)</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>!pip install -q "syft-flwr @ git+https://github.com/OpenMined/syft-flwr.git@main"
+                  <pre>!uv pip install -q "syft-flwr==0.5.3" "syft-client==0.1.94"
 
 import syft_client as sc
 import syft_flwr
-from pathlib import Path
 
-# Autenticação interativa no Google Colab + Google Drive
-email = input("Digite seu e-mail Google: ")
-client = sc.login(email=email)</pre>
+# No notebook do Data Owner (DO):
+do_email = input("Digite o seu e-mail Google (Data Owner): ").strip()
+do_client = sc.login_do(email=do_email)
+
+# No notebook do Data Scientist (DS):
+# ds_email = input("Digite o seu e-mail Google (Data Scientist): ").strip()
+# ds_client = sc.login_ds(email=ds_email)</pre>
                 </details>
               `,
             },
             {
               id: "act2-passo-2",
-              tocLabel: "2. Dados Privados (DO)",
+              stepIndex: 1,
+              tocLabel: "2. Adicionar Peers (DS)",
               html: `
-                <h3><span class="act2-role-badge role-do">DO</span> 2. Registro do Dataset Privado e Dados Mock</h3>
-                <p>Cada Data Owner baixa sua partição do dataset <em>Pima Indians Diabetes</em>, gera uma amostra sintética (<em>mock</em>) apenas com a estrutura das colunas para o Data Scientist testar o pipeline e cria o dataset privado no SyftBox.</p>
+                <h3><span class="act2-role-badge role-ds">DS</span> 2. Adicionar Data Owners como Peers na Rede</h3>
+                <p>O Data Scientist (DS) se conecta ao SyftBox e envia pedidos de conexão (<code>add_peer</code>) para os e-mails de todos os Data Owners do grupo via Google Drive.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Criação de dataset privado e mock no DO</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre># Cada DO carrega apenas sua própria partição clínica
-client.create_dataset(
-    name="pima-diabetes",
-    mock_path="/content/pima_mock.csv",
-    private_path="/content/pima_private.csv",
-    summary="Partição clínica local para classificação de diabetes (8 atributos + desfecho).",
-)
+                  <summary><span class="act1-summary-left"><span>Ver código: Envio de pedidos de conexão (add_peer)</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre>do_emails_list = []
+for i in range(1, num_dos + 1):
+    email = input(f"Digite o e-mail Google do DO{i}: ").strip()
+    do_emails_list.append(email)
 
-# Verifica os datasets publicados localmente pelo DO
-client.datasets.get_all()</pre>
+assert len(set(do_emails_list)) == len(do_emails_list), "Os e-mails dos DOs devem ser distintos!"
+assert ds_email not in do_emails_list, "O e-mail do DS deve ser diferente dos e-mails dos DOs!"
+
+for email in do_emails_list:
+    ds_client.add_peer(email)
+    print(f"Pedido de peer enviado para: {email}")</pre>
                 </details>
               `,
             },
             {
               id: "act2-passo-3",
-              tocLabel: "3. Conexão de Pares (DS)",
+              stepIndex: 2,
+              tocLabel: "3. Aprovar Peers (DO)",
               html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 3. Descoberta dos Data Owners na Rede</h3>
-                <p>No notebook do Data Scientist, adicionamos os e-mails dos Data Owners participantes como pares (<code>add_peer</code>) e inspecionamos os metadados e amostras mock disponíveis em cada nó.</p>
+                <h3><span class="act2-role-badge role-do">DO</span> 3. Carregar e Aprovar o DS como Peer (<code>ACCEPTED</code>)</h3>
+                <p>Antes de criar qualquer dataset, todos os Data Owners carregam os pedidos recebidos (<code>load_peers()</code>) e aprovam o DS (<code>approve_peer_request</code>) até o estado mudar de <code>PENDING</code> para <code>ACCEPTED</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Adicionando pares e listando datasets remotos</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>do_emails = [
-    "do1@exemplo.com",
-    "do2@exemplo.com",
-    "do3@exemplo.com",
-]
+                  <summary><span class="act1-summary-left"><span>Ver código: Aprovação de peer e sincronização no DO</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre>do_client.load_peers()
+print("Peers encontrados:", do_client.peers)
 
-for do_email in do_emails:
-    client.add_peer(do_email)
+for peer in do_client.peers:
+    if str(peer.state).lower().endswith("pending"):
+        do_client.approve_peer_request(peer.email)
+        print(f"Peer aprovado: {peer.email}")
 
-# Inspeciona os metadados compartilhados pelos Data Owners
-for peer in client.peers:
-    print(peer.email, "->", peer.datasets)</pre>
+do_client.load_peers()
+do_client.sync()
+print("Estado atualizado dos peers:", do_client.peers)</pre>
                 </details>
               `,
             },
             {
               id: "act2-passo-4",
-              tocLabel: "4. Projeto Flower & Jobs (DS)",
+              stepIndex: 3,
+              tocLabel: "4. Partição e Dataset (DO)",
               html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 4. Estruturação do Projeto Flower, Bootstrap e Envio de Jobs</h3>
-                <p>O Data Scientist cria o projeto Flower com <code>pyproject.toml</code>, <code>task.py</code> (rede MLP PyTorch), <code>client_app.py</code> e <code>server_app.py</code>, executa <code>syft_flwr.bootstrap()</code> para injetar o transporte SyftBox, valida na simulação mock e envia os jobs aos Data Owners.</p>
+                <h3><span class="act2-role-badge role-do">DO</span> 4. Particionar Dados (<code>1/N</code>), Inspecionar e Criar Dataset</h3>
+                <p>Cada DO informa o total de participantes e seu número (<code>1..N</code>), baixa o CSV do GitHub, gera sua partição estratificada privada (<code>private/</code>) e os dados sintéticos (<code>mock/</code>), inspeciona ambos localmente e publica o dataset com <code>create_dataset(..., sync=True)</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Bootstrap syft-flwr, teste mock e submit_jobs</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre>PROJECT_DIR = Path("/content/fl-diabetes-syft")
-
-# Converte o projeto Flower padrão para transporte assíncrono via SyftBox
-syft_flwr.bootstrap(
-    project_dir=PROJECT_DIR,
-    aggregator=client.email,
-    datasites=do_emails,
-)
-
-# Valida o código localmente usando apenas os dados mock dos DOs
-syft_flwr.run(project_dir=PROJECT_DIR, mock=True)
-
-# Submete o código federado para aprovação de cada Data Owner
-client.submit_jobs(
-    project_dir=PROJECT_DIR,
-    datasites=do_emails,
-    dataset_name="pima-diabetes",
-)</pre>
-                </details>
-              `,
-            },
-            {
-              id: "act2-passo-5-6",
-              tocLabel: "5–6. Aprovação e Treino (DO)",
-              html: `
-                <h3><span class="act2-role-badge role-do">DO</span> 5 e 6. Inspeção, Aprovação e Execução Local nos Data Owners</h3>
-                <p>Por segurança e governança, nenhum código é executado automaticamente no Data Owner. Cada participante lista os jobs pendentes, inspeciona os arquivos submetidos pelo Data Scientist, aprova o job e inicia o loop de processamento.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Aprovação de job e execução no Data Owner</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Particionamento, inspeção e create_dataset no DO</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre># Lista os jobs recebidos do Data Scientist
-jobs = client.jobs.get_all()
-for job in jobs:
-    print(job.id, job.status, job.submitted_by)
+                  <pre># Particionamento estratificado 1/N e geração de dados sintéticos (mock)
+skf = StratifiedKFold(n_splits=NUM_PARTITIONS, shuffle=True, random_state=42)
+_, part_idx = list(skf.split(df, df["Outcome"]))[PARTITION_ID]
+df_part = df.iloc[part_idx].reset_index(drop=True)
 
-# Aprova o job após revisar o código do modelo
-target_job = jobs[-1]
-target_job.approve()
+train_df, test_df = train_test_split(
+    df_part, test_size=0.2, random_state=42, stratify=df_part["Outcome"]
+)
 
-# Inicia a execução do ClientApp Flower sobre os dados privados locais
-client.process_approved_jobs()</pre>
+# Inspeção local: dados privados vs. dados sintéticos (mock)
+display(train_df.head())
+display(mock_train_df.head())
+
+# Remove dataset anterior se estiver reexecutando a célula
+try:
+    do_client.datasets.delete("pima-indians-diabetes-database")
+except Exception:
+    pass
+
+# Publicação e sincronização com o Google Drive
+do_client.create_dataset(
+    name="pima-indians-diabetes-database",
+    mock_path=DATASET_PATH / "mock",
+    private_path=DATASET_PATH / "private",
+    summary=f"Partição {do_num}/{NUM_PARTITIONS} ({DO_LABEL}) do Pima Indians Diabetes Dataset",
+    readme_path=DATASET_PATH / "README.md",
+    tags=["diabetes", "health", "medicine"],
+    sync=True,
+)
+do_client.sync()</pre>
                 </details>
               `,
             },
             {
-              id: "act2-passo-7-9",
-              tocLabel: "7–9. Agregação Global (DS)",
+              id: "act2-passo-5",
+              stepIndex: 4,
+              tocLabel: "5. Validar Mock (DS)",
               html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 7, 8 e 9. Execução do Servidor Federado (<code>FedAvg</code>) e Modelo Global</h3>
-                <p>Assim que os Data Owners aprovam e iniciam seus clientes, o Data Scientist executa <code>syft_flwr.run(project_dir=PROJECT_DIR, mock=False)</code>. Ao longo das rodadas, apenas os tensores de pesos PyTorch são trocados via Google Drive, agregados via <code>FedAvg</code> e consolidados no modelo global final.</p>
+                <h3><span class="act2-role-badge role-ds">DS</span> 5. Sincronizando e Inspecionando Datasets Sintéticos (Mock)</h3>
+                <p>Após todos os DOs concluírem a Etapa 4, o Data Scientist aguarda ~15 segundos, executa <code>ds_client.sync()</code> e valida os metadados e os datasets <code>mock</code> compartilhados por cada Data Owner via <code>ds_client.datasets.get_all(datasite=...)</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>Ver código: Execução real da federação no Data Scientist</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>Ver código: Sincronizando e inspecionando datasets mock no DS</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
-                  <pre># Inicia o ServerApp Flower sincronizando pesos via Google Drive
-syft_flwr.run(
-    project_dir=PROJECT_DIR,
-    mock=False,
+                  <pre>import pandas as pd
+from pathlib import Path
+
+ds_client.sync()
+
+for email in do_emails_list:
+    datasets = ds_client.datasets.get_all(datasite=email)
+    print(f"DO: {email} -> {len(datasets)} dataset(s)")
+    if datasets:
+        mock_dir = Path(datasets[0].mock_dir)
+        display(pd.read_csv(mock_dir / "train.csv").head())</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-6",
+              stepIndex: 5,
+              tocLabel: "6. Bootstrap e Jobs (DS)",
+              html: `
+                <h3><span class="act2-role-badge role-ds">DS</span> 6. Bootstrap do Projeto Flower e Submissão de Jobs</h3>
+                <p>O Data Scientist prepara o projeto Flower (<code>pyproject.toml</code>, <code>task.py</code>, <code>client_app.py</code>, <code>server_app.py</code>), injeta o transporte SyftBox com <code>syft_flwr.bootstrap()</code> e envia os jobs para os DOs via Google Drive.</p>
+                <p><strong>Verificação dos Arquivos (Aba Lateral):</strong> Antes de submeter o <em>job</em>, abra o painel <strong>Arquivos</strong> na aba lateral esquerda do Colab e navegue até <code>/content/fl-diabetes-prediction/</code> para conferir a estrutura gerada pelo <code>bootstrap()</code> (<code>pyproject.toml</code>, <code>main.py</code> e <code>fl_diabetes_prediction/</code> contendo <code>server_app.py</code>, <code>client_app.py</code> e <code>task.py</code>).</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>Ver código: Bootstrap syft-flwr e submissão de jobs no DS</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre>from pathlib import Path
+import subprocess
+import syft_flwr
+
+SYFT_FLWR_PROJECT_PATH = Path("/content/fl-diabetes-prediction")
+LOCAL_TAR_PATH = Path("/content/fl-diabetes-prediction.tar.gz")
+PROJECT_TAR_URL = "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pratica2/fl-diabetes-prediction.tar.gz"
+
+if not SYFT_FLWR_PROJECT_PATH.exists():
+    SYFT_FLWR_PROJECT_PATH.mkdir(parents=True, exist_ok=True)
+    if not LOCAL_TAR_PATH.exists():
+        subprocess.run(
+            ["curl", "-fSL", "--retry", "3", "--retry-delay", "2", PROJECT_TAR_URL, "-o", str(LOCAL_TAR_PATH)],
+            check=True,
+        )
+    subprocess.run(
+        ["tar", "-xzf", str(LOCAL_TAR_PATH), "-C", str(SYFT_FLWR_PROJECT_PATH)],
+        check=True,
+    )
+
+assert (SYFT_FLWR_PROJECT_PATH / "pyproject.toml").exists()
+
+# Injetar transporte SyftBox e submeter jobs aos DOs
+syft_flwr.bootstrap(
+    SYFT_FLWR_PROJECT_PATH,
+    aggregator=ds_email,
+    datasites=do_emails_list,
 )
 
-# Ao término das rodadas, os pesos agregados ficam salvos no diretório do projeto
-print("Treinamento federado concluído! Pesos globais disponíveis em:", PROJECT_DIR)</pre>
+for email in do_emails_list:
+    ds_client.submit_python_job(
+        user=email,
+        code_path=str(SYFT_FLWR_PROJECT_PATH),
+        job_name="fl-diabetes-training",
+    )
+
+ds_client.sync()</pre></pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-7",
+              stepIndex: 6,
+              tocLabel: "7. Aprovar e Treinar (DO)",
+              html: `
+                <h3><span class="act2-role-badge role-do">DO</span> 7. Revisar, Aprovar e Executar o Job nos Data Owners</h3>
+                <p>Cada Data Owner sincroniza (<code>do_client.sync()</code>), inspeciona o job recebido em <code>do_client.jobs[0]</code>, aprova a execução (<code>approve()</code>) e inicia o treinamento local sobre seus dados privados com <code>process_approved_jobs()</code>.</p>
+                <p><strong>Auditoria de Segurança (Aba Lateral):</strong> Antes de executar <code>approve()</code>, abra o painel <strong>Arquivos</strong> na aba lateral esquerda do Colab, navegue até o diretório do <em>job</em> recebido dentro de <code>/content/SyftBox_&lt;seu-email&gt;/</code> e revise <code>client_app.py</code>, <code>server_app.py</code>, <code>task.py</code> e <code>pyproject.toml</code> para confirmar que não há acesso ou envio de dados brutos de <code>private/</code>.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>Ver código: Sincronização, aprovação e execução local no DO</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre># Sincroniza para receber o job submetido pelo DS
+do_client.sync()
+print("Jobs recebidos:", do_client.jobs)
+do_client.jobs[0]
+
+# Aprova o job e inicia o treinamento local nos dados privados
+do_client.jobs[0].approve()
+print("Status após aprovação:", do_client.jobs)
+
+do_client.process_approved_jobs()</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-8",
+              stepIndex: 7,
+              tocLabel: "8. Servidor Agregador (DS)",
+              html: `
+                <h3><span class="act2-role-badge role-ds">DS</span> 8. Executar o Servidor Agregador Flower (<code>FedAvg</code>)</h3>
+                <p>Com os clientes locais dos Data Owners em execução, o Data Scientist inicia o servidor agregador Flower (<code>main.py</code>), coordenando as rodadas federadas e agregando apenas os parâmetros dos modelos via <code>FedAvg</code> sem acessar dados privados.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>Ver código: Execução do servidor agregador no DS</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre># Instalar dependências necessárias para o servidor/cliente Flower
+!uv pip install -q "flwr-datasets>=0.5.0" "imblearn>=0.0" "loguru>=0.7.3" \
+    "pandas>=2.2.3" "ipywidgets>=8.1.5" "scikit-learn>=1.6.1" "torch>=2.6.0" "ray==2.31.0"
+
+# Iniciar o servidor agregador FedAvg (aguarda conexões via SyftBox)
+syftbox_folder = f"/content/SyftBox_{ds_email}"
+!SYFTBOX_EMAIL="{ds_email}" SYFTBOX_FOLDER="{syftbox_folder}" uv run /content/fl-diabetes-prediction/main.py</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-9",
+              stepIndex: 8,
+              tocLabel: "9. Limpeza (Opcional)",
+              html: `
+                <h3><span class="act2-role-badge role-both">DS + DO</span> 9. Limpeza dos Recursos do SyftBox (Opcional)</h3>
+                <p>Após o término completo do treinamento federado e a consolidação do modelo global, todos os participantes podem remover as pastas locais e do Google Drive criadas pelo SyftBox usando <code>delete_syftbox()</code> antes de desconectar e excluir o ambiente de execução.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>Ver código: Limpeza do SyftBox (delete_syftbox)</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copiar código</button></div>
+                  <pre># Execute apenas após concluir todas as rodadas federadas
+do_client.delete_syftbox()  # Nos Data Owners
+# ds_client.delete_syftbox()  # No Data Scientist</pre>
                 </details>
               `,
             },
@@ -8264,16 +8447,23 @@ print("Treinamento federado concluído! Pesos globais disponíveis em:", PROJECT
           prevFooterLabel: "← Back to Activity 1",
           diagramTitle: "Federated Round Visual Flow (syft-flwr)",
           diagramDesc:
-            "Click the circles below to step through the protocol stages between Data Scientist (DS) and Data Owners (DO1, DO2, DO3).",
+            "Click the circles below (or the steps in the side menu) to step through the protocol stages between Data Scientist (DS) and Data Owners (DO1, DO2, DO3).",
+          svgAriaLabel:
+            "State diagram of Federated Learning stages between Data Scientist and Data Owners",
+          noteHtml:
+            '<p style="margin: 0 0 8px 0;"><strong>Note 1:</strong> In this activity, using the <code>syft-flwr</code> package requires granting the code permission to access your Google Drive and Google Cloud data. Therefore, we recommend using <strong>dedicated Google accounts</strong> for this purpose, with <strong>distinct accounts</strong> for the Data Scientist (DS) and each Data Owner (DO). After using the package, access can be revoked by following:<br>' +
+            '<span style="display: inline-block; margin-top: 4px; font-weight: 600;">Google Account &rarr; Linked apps (Third-party apps &amp; services) &rarr; Third-party authored notebook code &rarr; Delete all connections</span>.</p>' +
+            '<p style="margin: 0;"><strong>Note 2:</strong> After completing a run without errors, you may use <code>delete_syftbox()</code> (Step 9), but <strong>to ensure a clean start or restart after an error, delete any leftover SyftBox folders directly from your Google Drive</strong> (e.g., <code>SyftBox_*</code>), check the Colab <strong>Files</strong> sidebar (<code>/content</code>) so no old folders remain (<code>SyftBox_*</code>, <code>dataset/</code>, or <code>fl-diabetes-prediction/</code>), and restart the Colab runtime.</p>',
           diagramCaptions: [
-            "Step 1: The Data Scientist (DS) initializes the environment while Data Owners (DO1, DO2, DO3) hold their private datasets.",
-            "Step 2: Each Data Owner (DO1, DO2, DO3) launches its SyftBox client and registers its local private dataset.",
-            "Step 3: The Data Scientist (DS) connects to SyftBox and discovers peers DO1, DO2, and DO3 on the network via Google Drive.",
-            "Step 4: The Data Scientist (DS) defines the initial model and submits jobs to Data Owners through Google Drive.",
-            "Steps 5 & 6: Each Data Owner inspects incoming requests, approves the code, and trains the model locally on its own data.",
-            "Step 7: Data Owners upload only locally trained weights to the Data Scientist (DS) via Google Drive.",
-            "Step 8: Local models are aggregated (FedAvg) on the Data Scientist (DS) and the global model returns to Data Owners across iterative rounds.",
-            "Step 9: Rounds completed — the updated global model remains available to the Data Scientist and all Data Owners.",
+            "Step 1: Data Owners (DOs) and the Data Scientist (DS) install <code>syft-flwr</code> and <code>syft-client</code> and log in using distinct Google accounts.",
+            "Step 2: The Data Scientist (DS) connects to SyftBox and sends connection requests (<code>add_peer</code>) to the Data Owners (DOs) via Google Drive.",
+            "Step 3: Data Owners (DOs) load and approve the Data Scientist's (DS) connection requests until the state becomes <code>ACCEPTED</code>.",
+            "Step 4: Each Data Owner (DO) sets its partition (<code>1/N</code>), downloads the data, generates synthetic (<code>mock</code>) data, inspects it, and publishes the dataset.",
+            "Step 5: The Data Scientist (DS) waits ~15s, syncs files with the Data Owners (DOs), and validates metadata and synthetic (<code>mock</code>) datasets.",
+            "Step 6: The Data Scientist (DS) runs <code>bootstrap</code> on the Flower project and submits jobs to the Data Owners (DOs) via Google Drive.",
+            "Step 7: Each Data Owner (DO) syncs, reviews, and approves the received job and executes local training on private data.",
+            "Step 8: The Data Scientist (DS) runs the Flower aggregator server (<code>main.py</code>), aggregating local weights via <code>FedAvg</code> across iterative rounds.",
+            "Step 9: Rounds completed — the updated global model remains available to DS and DOs, and SyftBox resources can optionally be cleaned up via <code>delete_syftbox()</code>.",
           ],
           sections: [
             {
@@ -8290,55 +8480,38 @@ print("Treinamento federado concluído! Pesos globais disponíveis em:", PROJECT
             },
             {
               id: "act2-passo-1",
-              tocLabel: "1. Environment Setup",
+              stepIndex: 0,
+              tocLabel: "1. Install & Login",
               html: `
-                <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Installing Dependencies &amp; SyftBox Login</h3>
-                <p>Both Data Owner and Data Scientist install <code>syft-flwr</code> and authenticate via <code>syft_client.login()</code>, linking Google Drive as the asynchronous transport layer for files and messages.</p>
+                <h3><span class="act2-role-badge role-both">DO + DS</span> 1. Installing Packages &amp; Logging In with Google Accounts</h3>
+                <p>All Data Owners (DOs) and the Data Scientist (DS) install pinned versions of <code>syft-flwr</code> and <code>syft-client</code> and authenticate interactively using <strong>distinct Google accounts</strong> (<code>sc.login_do</code> on DOs and <code>sc.login_ds</code> on DS).</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Installation and login with syft_client</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Installation and login (DO and DS)</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>!pip install -q "syft-flwr @ git+https://github.com/OpenMined/syft-flwr.git@main"
+                  <pre>!uv pip install -q "syft-flwr==0.5.3" "syft-client==0.1.94"
 
 import syft_client as sc
 import syft_flwr
-from pathlib import Path
 
-# Interactive authentication in Google Colab + Google Drive
-email = input("Enter your Google email: ")
-client = sc.login(email=email)</pre>
+# On the Data Owner (DO) notebook:
+do_email = input("Enter your Google email (Data Owner): ").strip()
+do_client = sc.login_do(email=do_email)
+
+# On the Data Scientist (DS) notebook:
+# ds_email = input("Enter your Google email (Data Scientist): ").strip()
+# ds_client = sc.login_ds(email=ds_email)</pre>
                 </details>
               `,
             },
             {
               id: "act2-passo-2",
-              tocLabel: "2. Private Data (DO)",
+              stepIndex: 1,
+              tocLabel: "2. Add Peers (DS)",
               html: `
-                <h3><span class="act2-role-badge role-do">DO</span> 2. Registering Private Dataset &amp; Mock Data</h3>
-                <p>Each Data Owner downloads its partition of the <em>Pima Indians Diabetes</em> dataset, generates a synthetic (<em>mock</em>) sample with matching column structure for the Data Scientist to test the pipeline, and registers the private dataset on SyftBox.</p>
+                <h3><span class="act2-role-badge role-ds">DS</span> 2. Adding Data Owners as Network Peers</h3>
+                <p>The Data Scientist (DS) connects to SyftBox and sends peer connection requests (<code>add_peer</code>) to all participating Data Owners' emails via Google Drive.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Creating private and mock datasets on DO</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre># Each DO loads only its own clinical partition
-client.create_dataset(
-    name="pima-diabetes",
-    mock_path="/content/pima_mock.csv",
-    private_path="/content/pima_private.csv",
-    summary="Local clinical partition for diabetes classification (8 features + outcome).",
-)
-
-# Verify datasets published locally by the DO
-client.datasets.get_all()</pre>
-                </details>
-              `,
-            },
-            {
-              id: "act2-passo-3",
-              tocLabel: "3. Peer Discovery (DS)",
-              html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 3. Discovering Data Owners on the Network</h3>
-                <p>In the Data Scientist's notebook, we register participating Data Owner emails as network peers (<code>add_peer</code>) and inspect the metadata and mock samples exposed by each node.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Adding peers and listing remote datasets</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Sending peer requests (add_peer)</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
                   <pre>do_emails = [
     "do1@example.com",
@@ -8347,84 +8520,209 @@ client.datasets.get_all()</pre>
 ]
 
 for do_email in do_emails:
-    client.add_peer(do_email)
+    ds_client.add_peer(do_email)</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-3",
+              stepIndex: 2,
+              tocLabel: "3. Approve Peers (DO)",
+              html: `
+                <h3><span class="act2-role-badge role-do">DO</span> 3. Loading &amp; Approving the DS as Peer (<code>ACCEPTED</code>)</h3>
+                <p>Before creating any dataset, all Data Owners load incoming requests (<code>load_peers()</code>) and approve the DS (<code>approve_peer_request</code>) until the state transitions from <code>PENDING</code> to <code>ACCEPTED</code>.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>View code: Approving peer request and syncing on DO</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                  <pre>do_client.load_peers()
+print("Peers found:", do_client.peers)
 
-# Inspect metadata shared by Data Owners
-for peer in client.peers:
-    print(peer.email, "->", peer.datasets)</pre>
+for peer in do_client.peers:
+    if str(peer.state).lower().endswith("pending"):
+        do_client.approve_peer_request(peer.email)
+        print(f"Approved peer: {peer.email}")
+
+do_client.load_peers()
+do_client.sync()
+print("Updated peer states:", do_client.peers)</pre>
                 </details>
               `,
             },
             {
               id: "act2-passo-4",
-              tocLabel: "4. Flower Project & Jobs (DS)",
+              stepIndex: 3,
+              tocLabel: "4. Partition & Dataset (DO)",
               html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 4. Structuring the Flower Project, Bootstrap &amp; Job Submission</h3>
-                <p>The Data Scientist creates a Flower project with <code>pyproject.toml</code>, <code>task.py</code> (PyTorch MLP network), <code>client_app.py</code>, and <code>server_app.py</code>, runs <code>syft_flwr.bootstrap()</code> to inject SyftBox transport, validates via mock simulation, and submits jobs to Data Owners.</p>
+                <h3><span class="act2-role-badge role-do">DO</span> 4. Partitioning Data (<code>1/N</code>), Inspecting &amp; Creating Dataset</h3>
+                <p>Each DO enters the group size and its index (<code>1..N</code>), downloads the CSV from GitHub, builds its stratified private split (<code>private/</code>) and synthetic data (<code>mock/</code>), inspects both locally, and publishes the dataset via <code>create_dataset(..., sync=True)</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: syft-flwr bootstrap, mock test, and submit_jobs</span></span></summary>
-                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre>PROJECT_DIR = Path("/content/fl-diabetes-syft")
-
-# Convert standard Flower project to asynchronous SyftBox transport
-syft_flwr.bootstrap(
-    project_dir=PROJECT_DIR,
-    aggregator=client.email,
-    datasites=do_emails,
-)
-
-# Validate code locally using only DO mock data
-syft_flwr.run(project_dir=PROJECT_DIR, mock=True)
-
-# Submit federated code for approval by each Data Owner
-client.submit_jobs(
-    project_dir=PROJECT_DIR,
-    datasites=do_emails,
-    dataset_name="pima-diabetes",
-)</pre>
-                </details>
-              `,
-            },
-            {
-              id: "act2-passo-5-6",
-              tocLabel: "5–6. Approval & Local Run (DO)",
-              html: `
-                <h3><span class="act2-role-badge role-do">DO</span> 5 &amp; 6. Inspecting, Approving &amp; Running Locally on Data Owners</h3>
-                <p>For security and governance, no code runs automatically on a Data Owner. Each participant lists incoming jobs, inspects the files submitted by the Data Scientist, approves the job, and launches the processing loop.</p>
-                <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Approving job and running on Data Owner</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Partitioning, inspection, and create_dataset on DO</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre># List jobs received from the Data Scientist
-jobs = client.jobs.get_all()
-for job in jobs:
-    print(job.id, job.status, job.submitted_by)
+                  <pre># Stratified 1/N partitioning and synthetic (mock) data generation
+skf = StratifiedKFold(n_splits=NUM_PARTITIONS, shuffle=True, random_state=42)
+_, part_idx = list(skf.split(df, df["Outcome"]))[PARTITION_ID]
+df_part = df.iloc[part_idx].reset_index(drop=True)
 
-# Approve the job after reviewing model code
-target_job = jobs[-1]
-target_job.approve()
+train_df, test_df = train_test_split(
+    df_part, test_size=0.2, random_state=42, stratify=df_part["Outcome"]
+)
 
-# Launch Flower ClientApp execution over local private data
-client.process_approved_jobs()</pre>
+# Local inspection: private data vs. synthetic (mock) data
+display(train_df.head())
+display(mock_train_df.head())
+
+# Remove previous dataset if re-running the cell
+try:
+    do_client.datasets.delete("pima-indians-diabetes-database")
+except Exception:
+    pass
+
+# Publish and sync with Google Drive
+do_client.create_dataset(
+    name="pima-indians-diabetes-database",
+    mock_path=DATASET_PATH / "mock",
+    private_path=DATASET_PATH / "private",
+    summary=f"Partition {do_num}/{NUM_PARTITIONS} ({DO_LABEL}) of Pima Indians Diabetes Dataset",
+    readme_path=DATASET_PATH / "README.md",
+    tags=["diabetes", "health", "medicine"],
+    sync=True,
+)
+do_client.sync()</pre>
                 </details>
               `,
             },
             {
-              id: "act2-passo-7-9",
-              tocLabel: "7–9. Global Aggregation (DS)",
+              id: "act2-passo-5",
+              stepIndex: 4,
+              tocLabel: "5. Validate Mock (DS)",
               html: `
-                <h3><span class="act2-role-badge role-ds">DS</span> 7, 8 &amp; 9. Running the Federated Server (<code>FedAvg</code>) &amp; Global Model</h3>
-                <p>Once Data Owners approve and start their clients, the Data Scientist runs <code>syft_flwr.run(project_dir=PROJECT_DIR, mock=False)</code>. Across rounds, only PyTorch weight tensors are exchanged via Google Drive, aggregated via <code>FedAvg</code>, and consolidated into the final global model.</p>
+                <h3><span class="act2-role-badge role-ds">DS</span> 5. Syncing &amp; Inspecting Synthetic (Mock) Datasets</h3>
+                <p>Once all DOs finish Step 4, the Data Scientist waits ~15 seconds, runs <code>ds_client.sync()</code>, and validates the metadata and <code>mock</code> datasets shared by each Data Owner via <code>ds_client.datasets.get_all(datasite=...)</code>.</p>
                 <details class="act1-code-details">
-                  <summary><span class="act1-summary-left"><span>View code: Running real federation on Data Scientist</span></span></summary>
+                  <summary><span class="act1-summary-left"><span>View code: Syncing and inspecting mock datasets on DS</span></span></summary>
                   <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
-                  <pre># Start Flower ServerApp synchronizing weights via Google Drive
-syft_flwr.run(
-    project_dir=PROJECT_DIR,
-    mock=False,
+                  <pre>import pandas as pd
+from pathlib import Path
+
+ds_client.sync()
+
+for email in do_emails_list:
+    datasets = ds_client.datasets.get_all(datasite=email)
+    print(f"DO: {email} -> {len(datasets)} dataset(s)")
+    if datasets:
+        mock_dir = Path(datasets[0].mock_dir)
+        display(pd.read_csv(mock_dir / "train.csv").head())</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-6",
+              stepIndex: 5,
+              tocLabel: "6. Bootstrap & Jobs (DS)",
+              html: `
+                <h3><span class="act2-role-badge role-ds">DS</span> 6. Flower Project Bootstrap &amp; Job Submission</h3>
+                <p>The Data Scientist sets up the Flower project (<code>pyproject.toml</code>, <code>task.py</code>, <code>client_app.py</code>, <code>server_app.py</code>), injects SyftBox transport via <code>syft_flwr.bootstrap()</code>, and submits jobs to the DOs via Google Drive.</p>
+                <p><strong>Project File Check (Sidebar):</strong> Before submitting the job, open the <strong>Files</strong> panel on the left Colab sidebar and navigate to <code>/content/fl-diabetes-prediction/</code> to verify the files generated by <code>bootstrap()</code> (<code>pyproject.toml</code>, <code>main.py</code>, and <code>fl_diabetes_prediction/</code> containing <code>server_app.py</code>, <code>client_app.py</code>, and <code>task.py</code>).</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>View code: syft-flwr bootstrap and job submission on DS</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                  <pre>from pathlib import Path
+import subprocess
+import syft_flwr
+
+SYFT_FLWR_PROJECT_PATH = Path("/content/fl-diabetes-prediction")
+LOCAL_TAR_PATH = Path("/content/fl-diabetes-prediction.tar.gz")
+PROJECT_TAR_URL = "https://raw.githubusercontent.com/erickjun321/Aprendizado-Federado/refs/heads/main/pratica2/fl-diabetes-prediction.tar.gz"
+
+if not SYFT_FLWR_PROJECT_PATH.exists():
+    SYFT_FLWR_PROJECT_PATH.mkdir(parents=True, exist_ok=True)
+    if not LOCAL_TAR_PATH.exists():
+        subprocess.run(
+            ["curl", "-fSL", "--retry", "3", "--retry-delay", "2", PROJECT_TAR_URL, "-o", str(LOCAL_TAR_PATH)],
+            check=True,
+        )
+    subprocess.run(
+        ["tar", "-xzf", str(LOCAL_TAR_PATH), "-C", str(SYFT_FLWR_PROJECT_PATH)],
+        check=True,
+    )
+
+assert (SYFT_FLWR_PROJECT_PATH / "pyproject.toml").exists()
+
+# Inject SyftBox transport and submit jobs to DOs
+syft_flwr.bootstrap(
+    SYFT_FLWR_PROJECT_PATH,
+    aggregator=ds_email,
+    datasites=do_emails_list,
 )
 
-# Once rounds finish, aggregated weights are saved in the project directory
-print("Federated training complete! Global weights available at:", PROJECT_DIR)</pre>
+for email in do_emails_list:
+    ds_client.submit_python_job(
+        user=email,
+        code_path=str(SYFT_FLWR_PROJECT_PATH),
+        job_name="fl-diabetes-training",
+    )
+
+ds_client.sync()</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-7",
+              stepIndex: 6,
+              tocLabel: "7. Approve & Train (DO)",
+              html: `
+                <h3><span class="act2-role-badge role-do">DO</span> 7. Reviewing, Approving &amp; Running the Job on Data Owners</h3>
+                <p>Each Data Owner syncs (<code>do_client.sync()</code>), inspects the incoming job in <code>do_client.jobs[0]</code>, approves execution (<code>approve()</code>), and runs local training on its private partition via <code>process_approved_jobs()</code>.</p>
+                <p><strong>Security Audit (Sidebar):</strong> Before calling <code>approve()</code>, open the <strong>Files</strong> panel on the left Colab sidebar, navigate to the incoming job directory inside <code>/content/SyftBox_&lt;your-email&gt;/</code>, and inspect <code>client_app.py</code>, <code>server_app.py</code>, <code>task.py</code>, and <code>pyproject.toml</code> to confirm that raw records from <code>private/</code> are neither accessed nor exfiltrated.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>View code: Syncing, approving, and running locally on DO</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                  <pre># Sync to receive the job submitted by DS
+do_client.sync()
+print("Received jobs:", do_client.jobs)
+do_client.jobs[0]
+
+# Approve the job and start local training on private data
+do_client.jobs[0].approve()
+print("Status after approval:", do_client.jobs)
+
+do_client.process_approved_jobs()</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-8",
+              stepIndex: 7,
+              tocLabel: "8. Aggregator Server (DS)",
+              html: `
+                <h3><span class="act2-role-badge role-ds">DS</span> 8. Running the Flower Aggregator Server (<code>FedAvg</code>)</h3>
+                <p>Once the Data Owners' local clients are running, the Data Scientist launches the Flower aggregator server (<code>main.py</code>), orchestrating federated rounds and aggregating only model parameters via <code>FedAvg</code> without accessing private data.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>View code: Running aggregator server on DS</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                  <pre># Install required dependencies for the Flower server/client
+!uv pip install -q "flwr-datasets>=0.5.0" "imblearn>=0.0" "loguru>=0.7.3" \
+    "pandas>=2.2.3" "ipywidgets>=8.1.5" "scikit-learn>=1.6.1" "torch>=2.6.0" "ray==2.31.0"
+
+# Start the FedAvg aggregator server (waits for connections via SyftBox)
+syftbox_folder = f"/content/SyftBox_{ds_email}"
+!SYFTBOX_EMAIL="{ds_email}" SYFTBOX_FOLDER="{syftbox_folder}" uv run /content/fl-diabetes-prediction/main.py</pre>
+                </details>
+              `,
+            },
+            {
+              id: "act2-passo-9",
+              stepIndex: 8,
+              tocLabel: "9. Cleanup (Optional)",
+              html: `
+                <h3><span class="act2-role-badge role-both">DS + DO</span> 9. Cleaning Up SyftBox Resources (Optional)</h3>
+                <p>After federated training finishes and the global model is consolidated, all participants can delete local and Google Drive SyftBox folders using <code>delete_syftbox()</code> before disconnecting and deleting the runtime.</p>
+                <details class="act1-code-details">
+                  <summary><span class="act1-summary-left"><span>View code: SyftBox cleanup (delete_syftbox)</span></span></summary>
+                  <div class="act1-code-toolbar"><span>Python • Colab (DO &amp; DS)</span><button type="button" class="act1-copy-btn">Copy code</button></div>
+                  <pre># Run only after all federated rounds are complete
+do_client.delete_syftbox()  # On Data Owners
+# ds_client.delete_syftbox()  # On Data Scientist</pre>
                 </details>
               `,
             },
@@ -8466,37 +8764,49 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
 
         const captionEl = document.getElementById("act2-stage-caption");
         if (captionEl)
-          captionEl.textContent = content2.diagramCaptions[stepIdx] || "";
+          captionEl.innerHTML = content2.diagramCaptions[stepIdx] || "";
+        const prevArrow = document.getElementById("act2-prev-step");
+        const nextArrow = document.getElementById("act2-next-step");
+        if (prevArrow) prevArrow.disabled = stepIdx <= 0;
+        if (nextArrow)
+          nextArrow.disabled = stepIdx >= content2.diagramCaptions.length - 1;
 
         const setOpacity = (id, val) => {
           const el = document.getElementById(id);
           if (el) el.style.opacity = String(val);
         };
 
-        // Etapa 1 (idx 0): Apenas DOs, Drive e DS visíveis
-        // Etapa 2 (idx 1): Bancos de dados privados aparecem nos DOs
-        setOpacity("act2-dbs", stepIdx >= 1 ? 1 : 0);
+        // Etapa 1 (idx 0): DOs e DS instalam pacotes e vinculam Google Drive (apenas nós base visíveis)
+        // Etapa 2 (idx 1): DS conecta-se ao SyftBox e envia pedidos de conexão (add_peer) aos DOs via Drive
+        setOpacity("act2-peer-request-arrows", stepIdx === 1 ? 1 : 0);
 
-        // Etapa 3 (idx 2): Conexão pontilhada entre DOs <-> Drive <-> DS
+        // Etapa 3 (idx 2): DOs encontram e aprovam pedidos de conexão do DS (ACCEPTED)
         setOpacity("act2-peer-lines", stepIdx === 2 ? 1 : 0);
+        setOpacity("act2-peer-checks", stepIdx === 2 ? 1 : 0);
 
-        // Etapa 4 (idx 3): DS define modelo inicial, envia via Drive para DOs (setas DS->Drive->DO + Jobs nos DOs)
-        setOpacity("act2-model-global-init", stepIdx === 3 ? 1 : 0);
-        setOpacity("act2-ds-to-do-arrows", stepIdx === 3 ? 1 : 0);
-        setOpacity("act2-jobs", stepIdx === 3 ? 1 : 0);
+        // Etapa 4+ (idx >= 3): Cada DO baixa seus dados (privados) e gera dados sintéticos (mock)
+        setOpacity("act2-dbs", stepIdx >= 3 ? 1 : 0);
+        setOpacity("act2-mock-files", stepIdx === 3 || stepIdx === 4 ? 1 : 0);
 
-        // Etapas 5 e 6 (idx 4): DOs aprovam jobs (check) e treinam modelos locais
-        setOpacity("act2-checks", stepIdx === 4 ? 1 : 0);
-        setOpacity("act2-models-local", stepIdx === 4 || stepIdx === 5 ? 1 : 0);
+        // Etapa 5 (idx 4): DS sincroniza e lê metadados e conjuntos de dados sintéticos (mock)
+        setOpacity("act2-mock-to-ds-arrows", stepIdx === 4 ? 1 : 0);
+        setOpacity("act2-mock-ds-file", stepIdx === 4 ? 1 : 0);
 
-        // Etapa 7 (idx 5): DOs enviam modelos locais ao DS via Drive
-        setOpacity("act2-do-to-ds-arrows", stepIdx === 5 ? 1 : 0);
+        // Etapa 6 (idx 5): DS define o modelo inicial e envia os jobs aos DOs via Google Drive
+        setOpacity("act2-model-global-init", stepIdx === 5 ? 1 : 0);
+        setOpacity("act2-ds-to-do-arrows", stepIdx === 5 ? 1 : 0);
+        setOpacity("act2-jobs", stepIdx === 5 ? 1 : 0);
 
-        // Etapa 8 (idx 6): Troca bidirecional iterativa (DOs <-> Drive <-> DS) + Modelo Global agregado
-        setOpacity("act2-exchange-arrows", stepIdx === 6 ? 1 : 0);
+        // Etapa 7 (idx 6): DOs aprovam o código, treinam localmente e enviam pesos locais ao DS via Drive
+        setOpacity("act2-checks", stepIdx === 6 ? 1 : 0);
+        setOpacity("act2-models-local", stepIdx === 6 ? 1 : 0);
+        setOpacity("act2-do-to-ds-arrows", stepIdx === 6 ? 1 : 0);
 
-        // Etapas 8 e 9 (idx 6 e 7): Modelo global disponível no DS e sincronizado nos DOs
-        setOpacity("act2-model-global-final", stepIdx >= 6 ? 1 : 0);
+        // Etapa 8 (idx 7): Agregação FedAvg no DS e retorno do modelo global em rodadas iterativas
+        setOpacity("act2-exchange-arrows", stepIdx === 7 ? 1 : 0);
+
+        // Etapas 8 e 9 (idx 7 e 8): Modelo global atualizado disponível para o DS e todos os DOs
+        setOpacity("act2-model-global-final", stepIdx >= 7 ? 1 : 0);
       }
 
       function initScrollSpy(containerEl) {
@@ -8594,6 +8904,11 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
                 .querySelectorAll(".act1-toc-link")
                 .forEach((l) => l.classList.remove("active"));
               link.classList.add("active");
+
+              const stepAttr = link.getAttribute("data-step-index");
+              if (stepAttr !== null && atividadeAtual === 2) {
+                updateAct2DiagramState(Number(stepAttr));
+              }
             }
           });
         });
@@ -8628,27 +8943,27 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
             .join("");
 
           const nextBtnHtml = `
-            <div class="act1-next-footer">
-              <button type="button" id="act1-next-activity-btn" class="btn">${content1.nextFooterLabel}</button>
-            </div>
-          `;
+                  <div class="act1-next-footer">
+                    <button type="button" id="act1-next-activity-btn" class="btn">${content1.nextFooterLabel}</button>
+                  </div>
+                `;
 
           const tocHtml = `
-            <aside class="act1-toc-aside" aria-label="${content1.tocTitle}">
-              <details class="act1-toc-drawer" open>
-                <summary class="act1-toc-summary">${content1.tocTitle}</summary>
-                <div class="act1-toc-title">${content1.tocTitle}</div>
-                <ul class="act1-toc-list">
-                  ${content1.sections
-                    .map(
-                      (sec, idx) =>
-                        `<li><a href="#${sec.id}" class="act1-toc-link ${idx === 0 ? "active" : ""}">${sec.tocLabel}</a></li>`,
-                    )
-                    .join("")}
-                </ul>
-              </details>
-            </aside>
-          `;
+                  <aside class="act1-toc-aside" aria-label="${content1.tocTitle}">
+                    <details class="act1-toc-drawer" open>
+                      <summary class="act1-toc-summary">${content1.tocTitle}</summary>
+                      <div class="act1-toc-title">${content1.tocTitle}</div>
+                      <ul class="act1-toc-list">
+                        ${content1.sections
+                          .map(
+                            (sec, idx) =>
+                              `<li><a href="#${sec.id}" class="act1-toc-link ${idx === 0 ? "active" : ""}">${sec.tocLabel}</a></li>`,
+                          )
+                          .join("")}
+                      </ul>
+                    </details>
+                  </aside>
+                `;
 
           if (act1DocsContainer) {
             act1DocsContainer.innerHTML = `<article class="act1-docs-article">${sectionsHtml}${nextBtnHtml}</article>${tocHtml}`;
@@ -8684,10 +8999,7 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
           if (act1DocsContainer) act1DocsContainer.style.display = "none";
           if (act2NoteBox) {
             act2NoteBox.style.display = "block";
-            act2NoteBox.innerHTML =
-              lang === "pt"
-                ? "<strong>Atenção:</strong> Nessa atividade, o uso do pacote <code>syft-flwr</code> exige permitir que o código acesse seus dados do Google Drive e Google Cloud. Por esse motivo, recomenda-se o uso de contas Google exclusivas para esse fim."
-                : "<strong>Attention:</strong> In this activity, using the <code>syft-flwr</code> package requires allowing the code to access your Google Drive and Google Cloud data. For this reason, using dedicated Google accounts for this purpose is recommended.";
+            act2NoteBox.innerHTML = content2.noteHtml;
           }
           if (act2TopDiagram) act2TopDiagram.style.display = "block";
           if (act2DocsContainer) act2DocsContainer.style.display = "grid";
@@ -8706,6 +9018,24 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
           if (svgStage && !svgStage.querySelector("#act2-svg")) {
             svgStage.innerHTML = act2SVG;
           }
+          const act2SvgEl = document.getElementById("act2-svg");
+          if (act2SvgEl) {
+            act2SvgEl.setAttribute("aria-label", content2.svgAriaLabel);
+          }
+          const prevArrowEl = document.getElementById("act2-prev-step");
+          const nextArrowEl = document.getElementById("act2-next-step");
+          if (prevArrowEl) {
+            const prevLabel =
+              currentLang === "en" ? "Previous step" : "Etapa anterior";
+            prevArrowEl.setAttribute("aria-label", prevLabel);
+            prevArrowEl.setAttribute("title", prevLabel);
+          }
+          if (nextArrowEl) {
+            const nextLabel =
+              currentLang === "en" ? "Next step" : "Próxima etapa";
+            nextArrowEl.setAttribute("aria-label", nextLabel);
+            nextArrowEl.setAttribute("title", nextLabel);
+          }
 
           document
             .querySelectorAll("#act2-stage-pills-group .act2-stage-pill")
@@ -8715,6 +9045,26 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
                 updateAct2DiagramState(step);
               };
             });
+
+          const prevStepBtn = document.getElementById("act2-prev-step");
+          if (prevStepBtn) {
+            prevStepBtn.onclick = () => {
+              if (act2CurrentStep > 0) {
+                updateAct2DiagramState(act2CurrentStep - 1);
+              }
+            };
+          }
+
+          const nextStepBtn = document.getElementById("act2-next-step");
+          if (nextStepBtn) {
+            nextStepBtn.onclick = () => {
+              const content2 =
+                atividade2DocsContent[currentLang] || atividade2DocsContent.pt;
+              if (act2CurrentStep < content2.diagramCaptions.length - 1) {
+                updateAct2DiagramState(act2CurrentStep + 1);
+              }
+            };
+          }
 
           updateAct2DiagramState(act2CurrentStep);
 
@@ -8726,27 +9076,27 @@ print("Federated training complete! Global weights available at:", PROJECT_DIR)<
             .join("");
 
           const prevBtnHtml = `
-            <div class="act1-next-footer" style="justify-content: flex-start;">
-              <button type="button" id="act2-prev-activity-btn" class="btn btn-secondary">${content2.prevFooterLabel}</button>
-            </div>
-          `;
+                  <div class="act1-next-footer" style="justify-content: flex-start;">
+                    <button type="button" id="act2-prev-activity-btn" class="btn btn-secondary">${content2.prevFooterLabel}</button>
+                  </div>
+                `;
 
           const tocHtml = `
-            <aside class="act1-toc-aside" aria-label="${content1.tocTitle}">
-              <details class="act1-toc-drawer" open>
-                <summary class="act1-toc-summary">${content1.tocTitle}</summary>
-                <div class="act1-toc-title">${content1.tocTitle}</div>
-                <ul class="act1-toc-list">
-                  ${content2.sections
-                    .map(
-                      (sec, idx) =>
-                        `<li><a href="#${sec.id}" class="act1-toc-link ${idx === 0 ? "active" : ""}">${sec.tocLabel}</a></li>`,
-                    )
-                    .join("")}
-                </ul>
-              </details>
-            </aside>
-          `;
+                  <aside class="act1-toc-aside" aria-label="${content1.tocTitle}">
+                    <details class="act1-toc-drawer" open>
+                      <summary class="act1-toc-summary">${content1.tocTitle}</summary>
+                      <div class="act1-toc-title">${content1.tocTitle}</div>
+                      <ul class="act1-toc-list">
+                        ${content2.sections
+                          .map(
+                            (sec, idx) =>
+                              `<li><a href="#${sec.id}" ${sec.stepIndex !== undefined ? `data-step-index="${sec.stepIndex}"` : ""} class="act1-toc-link ${idx === 0 ? "active" : ""}">${sec.tocLabel}</a></li>`,
+                          )
+                          .join("")}
+                      </ul>
+                    </details>
+                  </aside>
+                `;
 
           if (act2DocsContainer) {
             act2DocsContainer.innerHTML = `<article class="act1-docs-article">${sectionsHtml}${prevBtnHtml}</article>${tocHtml}`;
